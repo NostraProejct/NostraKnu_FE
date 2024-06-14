@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/pages//Home.dart';
+import 'package:nostra/pages/Home.dart';
 import 'package:nostra/pages/Map.dart';
 import 'package:nostra/pages/MyTrip.dart';
 import 'package:nostra/pages/Community.dart';
@@ -7,7 +7,7 @@ import 'package:nostra/pages/Menu.dart';
 
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
   @override
   State<MainPage> createState() => _MainPageState();
 }
