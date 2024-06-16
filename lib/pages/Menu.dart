@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'menuDirectory/SettingsApp.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -88,9 +89,9 @@ class _MenuState extends State<Menu> {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 2),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -104,15 +105,19 @@ class _MenuState extends State<Menu> {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.account_circle),
               title: Text('계정 관리'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 계정 관리 기능 추가
               },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 2),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -120,12 +125,13 @@ class _MenuState extends State<Menu> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey.withOpacity(0.8),
+                    color: Colors.grey.withOpacity(0.3),
                   ),
                 ),
               ),
             ),
             ListTile(
+              leading: Icon(Icons.dark_mode_outlined),
               title: Text('다크모드'),
               trailing: Switch(
                 value: isDarkMode,
@@ -136,33 +142,48 @@ class _MenuState extends State<Menu> {
                 },
               ),
             ),
-            Divider(color: Colors.black),
+            Divider(),
             ListTile(
+              leading: Icon(Icons.language_outlined),
               title: Text('글자/언어'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 글자/언어 설정 기능 추가
               },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             ListTile(
+              leading: Icon(Icons.notifications_none_rounded),
               title: Text('알림/권한'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
-                // 알림/권한 설정 기능 추가
-              },
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SettingsApp()), // SettingsApp으로 이동
+                );
+                },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             ListTile(
+              leading: Icon(Icons.more_horiz_outlined),
               title: Text('기타'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 기타 설정 기능 추가
               },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
+              padding: const EdgeInsets.symmetric(vertical: 2),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -176,24 +197,36 @@ class _MenuState extends State<Menu> {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.announcement_rounded),
               title: Text('공지사항'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 공지사항 기능 추가
               },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             ListTile(
+              leading: Icon(Icons.info_outline_rounded),
               title: Text('앱 관리'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 앱 관리 기능 추가
               },
             ),
-            Divider(color: Colors.black),
+            Divider(),
             ListTile(
+              leading: Icon(Icons.privacy_tip_outlined),
               title: Text('개인정보처리방침'),
-              trailing: Icon(Icons.arrow_forward_ios),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.black.withOpacity(0.3), // 아이콘의 투명도 30%
+              ),
               onTap: () {
                 // 개인정보처리방침 기능 추가
               },
