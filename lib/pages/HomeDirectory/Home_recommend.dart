@@ -58,7 +58,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 color: Colors.black,
                 borderRadius: BorderRadius.circular(10),
                 ),
-
             ),
             CarouselSlider(
               // Set carousel controller

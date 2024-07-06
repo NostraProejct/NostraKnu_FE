@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/pages/Home_recommend.dart';
-import 'package:nostra/pages/Home_popular.dart';
+import 'package:nostra/pages/HomeDirectory/Home_recommend.dart';
+import 'package:nostra/pages/HomeDirectory/Home_popular.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
