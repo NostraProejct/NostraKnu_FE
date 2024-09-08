@@ -17,4 +17,4 @@ class Nostra extends StatelessWidget {
   }
 }
 // 실험 주석 추가
-//2024/9/04 Girhub 추가 확인하기, 각자 웹후크 연결하기
+//2024/9/09 김동준 github연결
