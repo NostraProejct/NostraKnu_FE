@@ -17,4 +17,4 @@ class Nostra extends StatelessWidget {
   }
 }
 // 실험 주석 추가
-//2024/9/09 김동준 github연결
+//2024/9/26 디스코드 웹후크 github
