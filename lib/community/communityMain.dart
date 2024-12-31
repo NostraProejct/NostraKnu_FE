@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class CommunityMain extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _CommunityMain();
   }
 }
