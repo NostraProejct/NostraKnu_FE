@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nostra/community/communityMain.dart';
+import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
 
 import 'home_screen.dart';
