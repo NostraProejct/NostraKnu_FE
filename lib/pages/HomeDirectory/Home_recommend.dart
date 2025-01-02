@@ -61,7 +61,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             ),
             CarouselSlider(
               // Set carousel controller
-              carouselController: carouselController,
+              carouselController: CarouselSliderController(),
               items: homesliderLists.map((url) {
                 return Builder(
                   builder: (BuildContext context) {
