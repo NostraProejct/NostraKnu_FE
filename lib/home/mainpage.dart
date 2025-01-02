@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: Colors.brown[100], // 갈색 배경
         elevation: 0,
-        title: Column(
+        title: _currentIndex == 0 ? Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Nostra 제목
@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ],
-        ),
+        ) : null,
         actions: [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black87),
