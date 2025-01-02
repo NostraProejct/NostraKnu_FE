@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/mainpage.dart';
+
+import 'home/mainpage.dart';
 
 void main() {
   runApp(const Nostra());
@@ -16,5 +17,3 @@ class Nostra extends StatelessWidget {
     );
   }
 }
-// 실험 주석 추가
-//2024/9/09 김동준 github연결
