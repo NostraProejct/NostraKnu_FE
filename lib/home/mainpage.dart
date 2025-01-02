@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nostra/community/communityMain.dart';
+import 'package:nostra/home/title/home_title.dart';
 
 import 'home_screen.dart';
 
@@ -18,19 +19,24 @@ class _MainPageState extends State<MainPage> {
     BottomNavigationBarItem(
       label: 'Home',
       icon: Icon(Icons.home_outlined),
+      activeIcon: Icon(Icons.home, color: Colors.black),
     ),
     BottomNavigationBarItem(
       label: 'Map',
       icon: Icon(Icons.location_on_outlined),
+      activeIcon: Icon(Icons.location_on, color: Colors.black),
     ),
     BottomNavigationBarItem(
       label: 'My Page',
       icon: Icon(Icons.person_outline),
+      activeIcon: Icon(Icons.person, color: Colors.black),
     ),
     BottomNavigationBarItem(
       label: 'Settings',
       icon: Icon(Icons.person_outline),
+      activeIcon: Icon(Icons.settings, color: Colors.black),
     ),
+
   ];
 
   final List<Widget> _pages = [
@@ -40,36 +46,29 @@ class _MainPageState extends State<MainPage> {
     Center(child: Text("Setting Screen"))
   ];
 
+  // 각 페이지에 해당하는 제목
+  final List<Widget> _titles = [
+    HomeTitleWidget(),
+    Text(
+      'Map',
+    ),
+    Text(
+      'My Page',
+    ),
+    Text(
+      'Settings',
+    ),
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.brown[100], // 갈색 배경
+        backgroundColor: Colors.brown[100],
         elevation: 0,
-        title: _currentIndex == 0 ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Nostra 제목
-            Text(
-              'Nostra',
-              style: GoogleFonts.poppins( // Google Fonts 적용
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            // 강원대학교 춘천캠퍼스 부제목
-            Text(
-              '강원대학교 춘천캠퍼스',
-              style: GoogleFonts.roboto( // Roboto 폰트
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-          ],
-        ) : null,
-        actions: [
+        title: _titles[_currentIndex],
+        actions: _currentIndex == 0 ? [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black87),
             onPressed: () {
@@ -85,7 +84,8 @@ class _MainPageState extends State<MainPage> {
               radius: 16,
             ),
           ),
-        ],
+        ]
+        : null,
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -96,6 +96,10 @@ class _MainPageState extends State<MainPage> {
           });
         },
         items: bottomItems,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
