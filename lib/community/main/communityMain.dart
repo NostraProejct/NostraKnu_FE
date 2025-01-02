@@ -43,13 +43,12 @@ class _CommunityMain extends State<CommunityMain> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("CommunityMain"),
-      ),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
-          NoticeBoardSection(data: boardDatas[0]),
-          NoticeBoardSection(data: boardDatas[1]),
+          NoticeBoardSection(data: boardDatas[0], backgroundColor: Color(0xFFF6F3E8)),
+          NoticeBoardSection(data: boardDatas[1], backgroundColor: Color(0xFFEAE0D8)),
+          NoticeBoardSection(data: boardDatas[2], backgroundColor: Color(0xFFDFDCD4)),
         ],
       ),
     );

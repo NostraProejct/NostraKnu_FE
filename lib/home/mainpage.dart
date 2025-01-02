@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
 
+import '../community/main/title/communityTitle.dart';
 import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -52,9 +53,7 @@ class _MainPageState extends State<MainPage> {
     Text(
       'Map',
     ),
-    Text(
-      'My Page',
-    ),
+    CommunityTitle(),
     Text(
       'Settings',
     ),
@@ -70,6 +69,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: _backgroundColors[_currentIndex],
         elevation: 0,

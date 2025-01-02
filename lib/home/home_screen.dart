@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              children: [
+              children: const [
                 // 학식과 대외활동
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                     FeatureSection(title: '대외활동'),
                   ],
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 // 취업
                 FeatureSection(title: '취업', isFullWidth: true),
               ],
