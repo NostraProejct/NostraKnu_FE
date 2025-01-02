@@ -60,12 +60,18 @@ class _MainPageState extends State<MainPage> {
     ),
   ];
 
+  final List<Color> _backgroundColors = [
+    Colors.brown[100]!,  // Home 화면 색상
+    Colors.white,        // Map 화면 색상
+    Colors.white,        // My Page 화면 색상
+    Colors.white,        // Settings 화면 색상
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.brown[100],
+        backgroundColor: _backgroundColors[_currentIndex],
         elevation: 0,
         title: _titles[_currentIndex],
         actions: _currentIndex == 0 ? [
