@@ -32,26 +32,7 @@ class _NoticeMain extends State<NoticeMain> {
     final currentNotices = getCurrentPageNotices();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "공지사항",
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.black),
-            onPressed: () {
-              // 검색 기능 추가
-            },
-          ),
-        ],
-      ),
+      backgroundColor: Colors.grey[200],
       body: Column(
         children: [
           Expanded(
@@ -74,11 +55,11 @@ class _NoticeMain extends State<NoticeMain> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+                    margin: EdgeInsets.symmetric(vertical: 9.0, horizontal: 16.0),
                     padding: EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(10.0),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.2),
@@ -94,17 +75,20 @@ class _NoticeMain extends State<NoticeMain> {
                           notice["id"]!,
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey[600],
+                            color: Colors.blue,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         SizedBox(height: 4),
-                        Text(
-                          notice["title"]!,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20.0),
+                          child: Text(
+                            notice["title"]!,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         SizedBox(height: 4),
@@ -124,7 +108,7 @@ class _NoticeMain extends State<NoticeMain> {
           ),
           // 페이지네이션 바
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            padding: const EdgeInsets.symmetric(vertical: 14.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

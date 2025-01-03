@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CommunityListTitle extends StatelessWidget {
-  const CommunityListTitle({super.key});
+class CommunityWriteTitle extends StatelessWidget {
+  const CommunityWriteTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +14,11 @@ class CommunityListTitle extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () {
-              context.pop();
+              context.go('/community/list');
             },
           ),
           const Text(
-            '정보 게시판',
+            '글쓰기',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const Spacer(),

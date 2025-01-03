@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nostra/community/write/communityWrite.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
@@ -19,11 +20,11 @@ final GoRouter router = GoRouter(
         if (state.fullPath == '/notice') {
           return MainPage(
             customTitle: NoticeTitleWidget(), // 커스텀 제목
-            customBackgroundColor: Colors.white, // 커스텀 배경색
+            customBackgroundColor: Colors.grey[200], // 커스텀 배경색
             child: child,
           );
         }
-        if (state.fullPath == '/community/list') {
+        if (state.fullPath == '/community/list/write') {
           return MainPage(
             customTitle: CommunityListTitle(), // 커스텀 제목
             customBackgroundColor: Colors.white, // 커스텀 배경색
@@ -82,6 +83,13 @@ final GoRouter router = GoRouter(
               path: 'list',
               pageBuilder: (BuildContext context, GoRouterState state) =>
                   _customTransitionPage(CommunityList()),
+              routes: [
+                GoRoute(
+                  path: 'write',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(CommunityWrite()),
+                ),
+              ]
             ),
           ],
         ),
@@ -108,7 +116,7 @@ CustomTransitionPage _customTransitionPage(Widget child) {
       return SlideTransition(
         position: animation.drive(
           Tween(
-            begin: const Offset(1.25, 0),
+            begin: const Offset(0, 0),
             end: Offset.zero,
           ).chain(CurveTween(curve: Curves.easeIn)),
         ),

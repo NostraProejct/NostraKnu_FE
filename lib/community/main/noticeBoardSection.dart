@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nostra/community/list/communityList.dart';
 import 'package:nostra/community/main/data/boardTextData.dart';
 
 import 'PostItem.dart';
@@ -56,8 +55,8 @@ class NoticeBoardSection extends StatelessWidget {
               ),
               // add 아이콘 버튼
               Positioned(
-                right: 0,
-                top: 0,
+                right: 5,
+                top: 5,
                 child: GestureDetector(
                   onTap: () {
                     context.go('/community/list');
