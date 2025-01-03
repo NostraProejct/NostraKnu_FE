@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'home/mainpage.dart';
+import 'infra/router/router.dart';
 
 void main() {
   runApp(const Nostra());
@@ -10,12 +9,10 @@ class Nostra extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: "Nostra",
-      home: MainPage(),
+      routerConfig: router,
     );
   }
 }
-// 실험 주석 추가
-//2024/9/09 김동준 github연결
