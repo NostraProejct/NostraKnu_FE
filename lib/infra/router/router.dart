@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../community/list/communityList.dart';
+import '../../community/list/title/communityListTitle.dart';
 import '../../community/main/communityMain.dart';
 import '../../home/home_screen.dart';
 import '../../home/mainpage.dart';
@@ -13,7 +14,7 @@ final GoRouter router = GoRouter(
       builder: (context, state, child) {
         if (state.fullPath == '/community/list') {
           return MainPage(
-            customTitle: Text('Community List'), // CommunityList용 커스텀 제목
+            customTitle: CommunityListTitle(), // CommunityList용 커스텀 제목
             customBackgroundColor: Colors.white, // CommunityList용 배경색
             child: child,
           );
