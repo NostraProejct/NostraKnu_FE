@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/mainpage.dart';
+
+import 'home/mainpage.dart';
 
 void main() {
   runApp(const Nostra());

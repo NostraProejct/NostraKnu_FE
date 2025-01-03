@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/community/communityMain.dart';
+
+import '../community/main/communityMain.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
