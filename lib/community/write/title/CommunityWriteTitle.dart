@@ -7,7 +7,6 @@ class CommunityWriteTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white, // 배경색 설정
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

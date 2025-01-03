@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/community/write/title/CommunityWriteTitle.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
@@ -24,7 +25,14 @@ final GoRouter router = GoRouter(
             child: child,
           );
         }
-        if (state.fullPath == '/community/list/write') {
+        else if (state.fullPath == '/community/write') {
+          return MainPage(
+            customTitle: CommunityWriteTitle(), // 커스텀 제목
+            customBackgroundColor: Colors.white, // 커스텀 배경색
+            child: child,
+          );
+        }
+        else if (state.fullPath == '/community/list') {
           return MainPage(
             customTitle: CommunityListTitle(), // 커스텀 제목
             customBackgroundColor: Colors.white, // 커스텀 배경색
@@ -83,13 +91,11 @@ final GoRouter router = GoRouter(
               path: 'list',
               pageBuilder: (BuildContext context, GoRouterState state) =>
                   _customTransitionPage(CommunityList()),
-              routes: [
-                GoRoute(
-                  path: 'write',
-                  pageBuilder: (BuildContext context, GoRouterState state) =>
-                      _customTransitionPage(CommunityWrite()),
-                ),
-              ]
+            ),
+            GoRoute(
+              path: 'write',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(CommunityWrite()),
             ),
           ],
         ),
