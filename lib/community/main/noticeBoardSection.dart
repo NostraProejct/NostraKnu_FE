@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nostra/community/list/communityList.dart';
 import 'package:nostra/community/main/data/boardTextData.dart';
 
 import 'PostItem.dart';

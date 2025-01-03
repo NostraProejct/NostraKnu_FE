@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
 
-import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
-import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
 
@@ -52,14 +49,6 @@ class _MainPageState extends State<MainPage> {
 
   ];
 
-  final List<Widget> _pages = [
-    HomeScreen(),
-    Center(child: Text("Map Screen")), // 임시 Map 화면
-    CommunityMain(),
-    Center(child: Text("Setting Screen"))
-  ];
-
-  // 각 페이지에 해당하는 제목
   final List<Widget> _titles = [
     HomeTitleWidget(),
     Text(

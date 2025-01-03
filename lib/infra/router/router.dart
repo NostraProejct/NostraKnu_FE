@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/setting/settingPage.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
@@ -41,13 +43,20 @@ final GoRouter router = GoRouter(
               path: 'list',
               pageBuilder: (BuildContext context, GoRouterState state) =>
                   _customTransitionPage(CommunityList()),
+              routes: [
+                  GoRoute(
+                    path: 'write',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(CommunityWrite())
+                  )
+                ]
             ),
           ],
         ),
         GoRoute(
           path: '/settings',
           pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(Text("hello Setting")),
+              _customTransitionPage(SettingPage()),
         ),
       ],
     ),
