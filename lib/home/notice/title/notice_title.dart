@@ -17,12 +17,6 @@ class NoticeTitleWidget extends StatelessWidget {
           '공지사항',
           style: TextStyle(color: Colors.black),
         ),
-        IconButton(
-          icon: Icon(Icons.search, color: Colors.black),
-          onPressed: () {
-            // 검색 기능 추가
-          },
-        ),
       ],
     );
   }
