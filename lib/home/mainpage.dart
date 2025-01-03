@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
@@ -8,7 +9,11 @@ import '../community/main/title/communityTitle.dart';
 import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+
+  final Widget child;
+
+  const MainPage({super.key, required this.child});
+
   @override
   State<MainPage> createState() => _MainPageState();
 }
@@ -101,12 +106,37 @@ class _MainPageState extends State<MainPage> {
         ]
         : null,
       ),
-      body: _pages[_currentIndex],
+      body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            switch(index) {
+              case 0:
+                context.go('/');
+                setState(() {
+                  _currentIndex = index;
+                });
+                break;
+              case 1:
+                context.go('/map');
+                setState(() {
+                  _currentIndex = index;
+                });
+                break;
+              case 2:
+                context.go('/community');
+                setState(() {
+                  _currentIndex = index;
+                });
+                break;
+              case 3:
+                context.go('/settings');
+                setState(() {
+                  _currentIndex = index;
+                });
+                break;
+            }
           });
         },
         items: bottomItems,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nostra/community/list/communityList.dart';
 import 'package:nostra/community/main/data/boardTextData.dart';
 
@@ -57,10 +58,7 @@ class NoticeBoardSection extends StatelessWidget {
                 top: 0,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CommunityList()),
-                    );
+                    context.go('/community/list');
                   },
                   child: Icon(
                     Icons.add,
