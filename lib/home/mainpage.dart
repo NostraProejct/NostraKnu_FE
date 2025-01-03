@@ -73,7 +73,7 @@ class _MainPageState extends State<MainPage> {
   ];
 
   final List<Color> _backgroundColors = [
-    Colors.grey[300]!,  // Home 화면 색상
+    Colors.grey[200]!,  // Home 화면 색상
     Colors.white,        // Map 화면 색상
     Colors.white,        // My Page 화면 색상
     Colors.white,        // Settings 화면 색상

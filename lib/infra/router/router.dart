@@ -20,7 +20,7 @@ final GoRouter router = GoRouter(
         if (state.fullPath == '/notice') {
           return MainPage(
             customTitle: NoticeTitleWidget(), // 커스텀 제목
-            customBackgroundColor: Colors.white, // 커스텀 배경색
+            customBackgroundColor: Colors.grey[200], // 커스텀 배경색
             child: child,
           );
         }
