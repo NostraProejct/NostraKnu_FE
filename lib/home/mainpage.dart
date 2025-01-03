@@ -99,7 +99,7 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
       appBar: AppBar(
         backgroundColor: widget.customBackgroundColor ?? _titleBackgroundColors[_currentIndex],
-        elevation: 0,
+        elevation: 0,git 
         title: widget.customTitle ?? _titles[_currentIndex],
         actions: _currentIndex == 0 ? [
           IconButton(
