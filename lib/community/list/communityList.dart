@@ -51,7 +51,7 @@ class _CommunityList extends State<CommunityList> {
               height: 30,
               child: OutlinedButton(
                 onPressed: () {
-                  context.go('/community/write');
+                  context.go('/community/list/write');
                 },
                 child: Text('글 작성하기', style: TextStyle(fontSize: 10),),
                 style: OutlinedButton.styleFrom(
