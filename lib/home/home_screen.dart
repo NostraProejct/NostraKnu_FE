@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -26,13 +25,18 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // 공지사항 칸
-              Container(
-                height: 170,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(12),
+              // 공지사항
+              GestureDetector(
+                onTap: () {
+                  context.go('/notice');
+                },
+                child: Container(
+                  height: 170,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
               ),
             ],
@@ -43,18 +47,37 @@ class HomeScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              children: const [
+              children: [
                 // 학식과 대외활동
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FeatureSection(title: '학식'),
-                    FeatureSection(title: '대외활동'),
+                    FeatureSection(
+                      title: '학식',
+                      onTap: () {
+                        // 학식 페이지로 이동
+                        context.go('/cafeteria');
+                      },
+                    ),
+                    FeatureSection(
+                      title: '대외활동',
+                      onTap: () {
+                        // 대외활동 페이지로 이동
+                        context.go('/activities');
+                      },
+                    ),
                   ],
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 // 취업
-                FeatureSection(title: '취업', isFullWidth: true),
+                FeatureSection(
+                  title: '취업',
+                  isFullWidth: true,
+                  onTap: () {
+                    // 취업 페이지로 이동
+                    context.go('/employment');
+                  },
+                ),
               ],
             ),
           ),
@@ -68,36 +91,40 @@ class HomeScreen extends StatelessWidget {
 class FeatureSection extends StatelessWidget {
   final String title;
   final bool isFullWidth;
+  final VoidCallback onTap;
 
-  const FeatureSection({required this.title, this.isFullWidth = false});
+  const FeatureSection({required this.title, this.isFullWidth = false, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // 텍스트 (카드 위에 위치)
-        Padding(
-          padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 텍스트 (카드 위에 위치)
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
           ),
-        ),
-        // 카드 배경
-        Container(
-          width: isFullWidth ? double.infinity : (MediaQuery.of(context).size.width - 50) / 2,
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(12),
+          // 카드 배경
+          Container(
+            width: isFullWidth ? double.infinity : (MediaQuery.of(context).size.width - 50) / 2,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
