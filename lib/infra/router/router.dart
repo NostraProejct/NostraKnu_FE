@@ -1,36 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nostra/community/write/communityWrite.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
 import '../../community/main/communityMain.dart';
-import '../../community/write/title/CommunityWriteTitle.dart';
 import '../../home/home_screen.dart';
+import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
 import '../../home/notice/title/notice_title.dart';
 import '../../home/mainpage.dart';
-
-class PlaceholderPage extends StatelessWidget {
-  final String title;
-
-  const PlaceholderPage({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          '$title 페이지 준비 중',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-}
 
 // GoRouter 설정
 final GoRouter router = GoRouter(
@@ -45,17 +23,10 @@ final GoRouter router = GoRouter(
             child: child,
           );
         }
-        else if (state.fullPath == '/community/list') {
+        if (state.fullPath == '/community/list') {
           return MainPage(
             customTitle: CommunityListTitle(), // 커스텀 제목
             customBackgroundColor: Colors.white, // 커스텀 배경색
-            child: child,
-          );
-        }
-        else if(state.fullPath == '/community/write') {
-          return MainPage(
-            customTitle: CommunityWriteTitle(),
-            customBackgroundColor: Colors.white,
             child: child,
           );
         }
@@ -72,23 +43,26 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: 'notice',
               pageBuilder: (context, state) => MaterialPage(
-                child: NoticeMain(),
+                child: NoticeMain(), // 공지사항
               ),
             ),
             GoRoute(
               path: 'cafeteria',
-              pageBuilder: (context, state) =>
-                  _customTransitionPage(PlaceholderPage(title: '학식'),),
+              pageBuilder: (context, state) => MaterialPage(
+                child: PlaceholderPage(title: '학식'), // 학식
+              ),
             ),
             GoRoute(
               path: 'activities',
-              pageBuilder: (context, state) =>
-                  _customTransitionPage(PlaceholderPage(title: '대외활동'),),
+              pageBuilder: (context, state) => MaterialPage(
+                child: PlaceholderPage(title: '대외활동'), // 대외활동
+              ),
             ),
             GoRoute(
               path: 'employment',
-              pageBuilder: (context, state) =>
-                  _customTransitionPage(PlaceholderPage(title: '취업'),),
+              pageBuilder: (context, state) => MaterialPage(
+                child: PlaceholderPage(title: '취업'), // 취업
+              ),
             ),
           ],
         ),
@@ -106,16 +80,6 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: 'list',
-              pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(CommunityList()),
-            ),
-            GoRoute(
-              path: 'write',
-              pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(CommunityWrite()),
-            ),
-            GoRoute(
-              path: 'detailPost',
               pageBuilder: (BuildContext context, GoRouterState state) =>
                   _customTransitionPage(CommunityList()),
             ),
@@ -144,7 +108,7 @@ CustomTransitionPage _customTransitionPage(Widget child) {
       return SlideTransition(
         position: animation.drive(
           Tween(
-            begin: const Offset(0, 0),
+            begin: const Offset(1.25, 0),
             end: Offset.zero,
           ).chain(CurveTween(curve: Curves.easeIn)),
         ),

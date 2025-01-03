@@ -14,10 +14,10 @@ class _NoticeMain extends State<NoticeMain> {
 
   final List<Map<String, String>> notices = List.generate(
     50, (index) => {
-    "id": "${1045 - index}",
-    "title": "공지사항 ${index + 1} 제목",
-    "date": "24.10.${(index % 30 + 1).toString().padLeft(2, '0')}"
-  },
+      "id": "${1045 - index}",
+      "title": "공지사항 ${index + 1} 제목",
+      "date": "24.10.${(index % 30 + 1).toString().padLeft(2, '0')}"
+    },
   );
 
   List<Map<String, String>> getCurrentPageNotices() {
