@@ -63,15 +63,8 @@ CustomTransitionPage _customTransitionPage(Widget child) {
         Animation secondaryAnimation,
         Widget child,
         ) {
-      return SlideTransition(
-        position: animation.drive(
-          Tween(
-            begin: const Offset(1.25, 0), // Starting position off-screen to the right
-            end: Offset.zero,              // Ending position on-screen
-          ).chain(CurveTween(curve: Curves.easeIn)),
-        ),
-        child: child,
-      );
+      // 애니메이션 없이 바로 전환되도록 child만 반환
+      return child;
     },
   );
 }

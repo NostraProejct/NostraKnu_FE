@@ -10,8 +10,8 @@ import 'home_screen.dart';
 class MainPage extends StatefulWidget {
 
   final Widget child;
-  final Widget? customTitle;  // 추가
-  final Color? customBackgroundColor;  // 추가
+  final Widget? customTitle;
+  final Color? customBackgroundColor;
 
   const MainPage({
     super.key,

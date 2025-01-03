@@ -56,8 +56,8 @@ class NoticeBoardSection extends StatelessWidget {
               ),
               // add 아이콘 버튼
               Positioned(
-                right: 0,
-                top: 0,
+                right: 5,
+                top: 5,
                 child: GestureDetector(
                   onTap: () {
                     context.go('/community/list');

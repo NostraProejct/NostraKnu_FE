@@ -9,6 +9,7 @@ class CommunityListTitle extends StatelessWidget {
     return Container(
       color: Colors.white, // 배경색 설정
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           IconButton(
             icon: const Icon(Icons.arrow_back_ios),
@@ -19,6 +20,13 @@ class CommunityListTitle extends StatelessWidget {
           const Text(
             '정보 게시판',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          const Spacer(),
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.black87),
+            onPressed: () {
+              // 검색 버튼 동작
+            },
           ),
         ],
       ),

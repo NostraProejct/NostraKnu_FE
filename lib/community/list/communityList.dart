@@ -128,6 +128,5 @@ class _CommunityList extends State<CommunityList> {
 
 
 Future<List<Data_pre>> fetchData(int pageKey, int pageSize) async {
-  await Future.delayed(Duration(seconds: 2));
   return boardDatas.expand((board) => board.posts).skip(pageKey).take(pageSize).toList();
 }
