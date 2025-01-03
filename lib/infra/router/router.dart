@@ -16,7 +16,19 @@ final GoRouter router = GoRouter(
       routes: [
         GoRoute(
           path: '/',
-          builder: (context, state) => HomeScreen(),
+          pageBuilder: (BuildContext context, GoRouterState state) =>
+              CustomTransitionPage(
+                child: HomeScreen(),
+                transitionsBuilder: (
+                    BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    Widget child,
+                    ) => FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
+              ),
         ),
         GoRoute(
           path: '/map',
