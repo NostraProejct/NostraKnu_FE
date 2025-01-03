@@ -60,16 +60,18 @@ class _CommunityList extends State<CommunityList> {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Icon(Icons.favorite, size: 16, color: Colors.red),
-                      SizedBox(width: 4),
-                      Text(
-                        item.likes.toString(),
-                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                      ),
-                    ],
+                  Container(
+                    width: 40, // 고정된 너비 설정
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween, // 양쪽에 붙어있게 정렬
+                      children: [
+                        Icon(Icons.favorite, size: 16, color: Colors.red),
+                        Text(
+                          item.likes.toString(),
+                          style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
