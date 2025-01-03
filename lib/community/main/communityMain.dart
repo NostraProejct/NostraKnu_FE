@@ -6,6 +6,7 @@ import 'data/data.dart';
 
 
 class CommunityMain extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => _CommunityMain();
 }
@@ -48,7 +49,7 @@ class _CommunityMain extends State<CommunityMain> {
         children: [
           NoticeBoardSection(data: boardDatas[0], backgroundColor: Color(0xFFF6F3E8)),
           NoticeBoardSection(data: boardDatas[1], backgroundColor: Color(0xFFEAE0D8)),
-          NoticeBoardSection(data: boardDatas[2], backgroundColor: Color(0xFFDFDCD4)),
+          NoticeBoardSection(data: boardDatas[2], backgroundColor: Color(0xFFDFDCD4))
         ],
       ),
     );

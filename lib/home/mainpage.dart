@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
 
+import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
 import 'home_screen.dart';
 
@@ -65,6 +66,13 @@ class _MainPageState extends State<MainPage> {
     Colors.white,        // My Page 화면 색상
     Colors.white,        // Settings 화면 색상
   ];
+
+  void _navigateToCommunityList() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CommunityList()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
