@@ -31,6 +31,7 @@ class NoticeBoardSection extends StatelessWidget {
             ),
           ),
         ),
+
         // 게시글 컨테이너
         Container(
           margin: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
@@ -47,7 +48,8 @@ class NoticeBoardSection extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Column(
-                      children: data.posts.map((post) => PostItem(data: post)).toList(),
+                      children: data.posts.map((post) => PostItem(data: post))
+                          .toList(),
                     ),
                   ),
                 ],

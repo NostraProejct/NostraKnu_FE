@@ -11,44 +11,66 @@ final GoRouter router = GoRouter(
   routes: [
     ShellRoute(
       builder: (context, state, child) {
+        if (state.fullPath == '/community/list') {
+          return MainPage(
+            customTitle: Text('Community List'), // CommunityList용 커스텀 제목
+            customBackgroundColor: Colors.white, // CommunityList용 배경색
+            child: child,
+          );
+        }
         return MainPage(child: child);
       },
       routes: [
         GoRoute(
           path: '/',
           pageBuilder: (BuildContext context, GoRouterState state) =>
-              CustomTransitionPage(
-                child: HomeScreen(),
-                transitionsBuilder: (
-                    BuildContext context,
-                    Animation<double> animation,
-                    Animation<double> secondaryAnimation,
-                    Widget child,
-                    ) => FadeTransition(
-                  opacity: animation,
-                  child: child,
-                ),
-              ),
+              _customTransitionPage(HomeScreen()),
         ),
         GoRoute(
           path: '/map',
-          builder: (context, state) => Center(child: Text("Map Screen")),
+          pageBuilder: (BuildContext context, GoRouterState state) =>
+              _customTransitionPage(Text("hello map")),
         ),
         GoRoute(
           path: '/community',
-          builder: (context, state) => CommunityMain(),
+          pageBuilder: (BuildContext context, GoRouterState state) =>
+              _customTransitionPage(CommunityMain()),
           routes: [
             GoRoute(
               path: 'list',
-              builder: (context, state) => CommunityList(),
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(CommunityList()),
             ),
           ],
         ),
         GoRoute(
           path: '/settings',
-          builder: (context, state) => Center(child: Text("Setting Screen")),
+          pageBuilder: (BuildContext context, GoRouterState state) =>
+              _customTransitionPage(Text("hello Setting")),
         ),
       ],
     ),
   ],
 );
+
+CustomTransitionPage _customTransitionPage(Widget child) {
+  return CustomTransitionPage(
+    child: child,
+    transitionsBuilder: (
+        BuildContext context,
+        Animation animation,
+        Animation secondaryAnimation,
+        Widget child,
+        ) {
+      return SlideTransition(
+        position: animation.drive(
+          Tween(
+            begin: const Offset(1.25, 0), // Starting position off-screen to the right
+            end: Offset.zero,              // Ending position on-screen
+          ).chain(CurveTween(curve: Curves.easeIn)),
+        ),
+        child: child,
+      );
+    },
+  );
+}

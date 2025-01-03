@@ -8,10 +8,10 @@ import 'data/data.dart';
 class CommunityMain extends StatefulWidget {
 
   @override
-  State<StatefulWidget> createState() => _CommunityMain();
+  State createState() => _CommunityMain();
 }
 
-class _CommunityMain extends State<CommunityMain> {
+class _CommunityMain extends State {
 
   final boardDatas = [
     BoardTextData(

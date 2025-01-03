@@ -11,8 +11,15 @@ import 'home_screen.dart';
 class MainPage extends StatefulWidget {
 
   final Widget child;
+  final Widget? customTitle;  // 추가
+  final Color? customBackgroundColor;  // 추가
 
-  const MainPage({super.key, required this.child});
+  const MainPage({
+    super.key,
+    required this.child,
+    this.customTitle,
+    this.customBackgroundColor
+  });
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -82,11 +89,11 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
       appBar: AppBar(
-        backgroundColor: _backgroundColors[_currentIndex],
+        backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
         elevation: 0,
-        title: _titles[_currentIndex],
+        title: widget.customTitle ?? _titles[_currentIndex],
         actions: _currentIndex == 0 ? [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black87),
@@ -104,7 +111,7 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
         ]
-        : null,
+            : null,
       ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
