@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/home/title/home_title.dart';
 
+import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
+import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
 
   final Widget child;
-  final Widget? customTitle;
-  final Color? customBackgroundColor;
+  final Widget? customTitle;  // 추가
+  final Color? customBackgroundColor;  // 추가
 
   const MainPage({
     super.key,
@@ -37,18 +41,26 @@ class _MainPageState extends State<MainPage> {
       activeIcon: Icon(Icons.location_on, color: Colors.black),
     ),
     BottomNavigationBarItem(
-      label: 'My Page',
-      icon: Icon(Icons.person_outline),
-      activeIcon: Icon(Icons.person, color: Colors.black),
+      label: 'Community',
+      icon: Icon(Icons.people_outline),
+      activeIcon: Icon(Icons.people, color: Colors.black),
     ),
     BottomNavigationBarItem(
-      label: 'Settings',
+      label: 'My Page',
       icon: Icon(Icons.person_outline),
       activeIcon: Icon(Icons.settings, color: Colors.black),
     ),
 
   ];
 
+  final List<Widget> _pages = [
+    HomeScreen(),
+    Center(child: Text("Map Screen")), // 임시 Map 화면
+    CommunityMain(),
+    Center(child: Text("Setting Screen"))
+  ];
+
+  // 각 페이지에 해당하는 제목
   final List<Widget> _titles = [
     HomeTitleWidget(),
     Text(
@@ -61,6 +73,13 @@ class _MainPageState extends State<MainPage> {
   ];
 
   final List<Color> _backgroundColors = [
+    Colors.grey[300]!,  // Home 화면 색상
+    Colors.white,        // Map 화면 색상
+    Colors.white,        // My Page 화면 색상
+    Colors.white,        // Settings 화면 색상
+  ];
+
+  final List<Color> _titleBackgroundColors = [
     Colors.brown[100]!,  // Home 화면 색상
     Colors.white,        // Map 화면 색상
     Colors.white,        // My Page 화면 색상
@@ -72,7 +91,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
       appBar: AppBar(
-        backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
+        backgroundColor: widget.customBackgroundColor ?? _titleBackgroundColors[_currentIndex],
         elevation: 0,
         title: widget.customTitle ?? _titles[_currentIndex],
         actions: _currentIndex == 0 ? [

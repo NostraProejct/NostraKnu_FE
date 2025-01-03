@@ -10,9 +10,6 @@ class _CommunityWrite extends State<CommunityWrite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Community Write'),
-      ),
       body: Center(
         child: Text('Write your content here!'),
       ),

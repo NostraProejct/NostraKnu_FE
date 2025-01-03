@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import 'data/testData.dart';
@@ -50,7 +51,7 @@ class _CommunityList extends State<CommunityList> {
               height: 30,
               child: OutlinedButton(
                 onPressed: () {
-
+                  context.go('/community/write');
                 },
                 child: Text('글 작성하기', style: TextStyle(fontSize: 10),),
                 style: OutlinedButton.styleFrom(

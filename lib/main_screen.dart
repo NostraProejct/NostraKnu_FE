@@ -4,7 +4,6 @@ import 'infra/router/router.dart';
 void main() {
   runApp(const Nostra());
 }
-
 class Nostra extends StatelessWidget {
   const Nostra({super.key});
 
