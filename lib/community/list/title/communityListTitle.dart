@@ -6,19 +6,22 @@ class CommunityListTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            context.pop();
-          },
-        ),
-        const Text(
-          '정보 게시판',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-      ],
+    return Container(
+      color: Colors.white, // 배경색 설정
+      child: Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              context.pop();
+            },
+          ),
+          const Text(
+            '정보 게시판',
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
     );
   }
 }
