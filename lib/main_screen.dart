@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/home/mainpage.dart';
+
 
 void main() {
   runApp(const Nostra());
@@ -14,7 +14,7 @@ class Nostra extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Nostra",
-      home: MainPage(),
+
     );
   }
 }

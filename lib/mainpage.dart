@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/pages/HomeDirectory/Home.dart';
 import 'package:nostra/pages/Map.dart';
 import 'package:nostra/pages/MyTrip.dart';
 import 'package:nostra/pages/Community.dart';
@@ -37,7 +36,6 @@ class _MainPageState extends State<MainPage> {
     )
   ];
   List pages = [
-    Home(),
     Map(),
     MyTrip(),
     Community(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/community/communityMain.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -11,7 +11,7 @@ class _MainPageState extends State<MainPage> {
 
   int curPageIndex = 0;
 
-  final List<Widget> pages = [ Text("Here is home page"), CommunityMain() ];
+  final List<Widget> pages = [ Text("Here is home page") ];
 
   @override
   Widget build(BuildContext context) {
