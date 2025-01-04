@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/home/activity/employment.main.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
@@ -17,7 +18,7 @@ final GoRouter router = GoRouter(
   routes: [
     ShellRoute(
       builder: (context, state, child) {
-        if (state.fullPath == '/notice') {
+        if (state.fullPath == '/notice') {//
           return MainPage(
             customTitle: NoticeTitleWidget(), // 커스텀 제목
             customBackgroundColor: Colors.grey[200], // 커스텀 배경색
@@ -56,7 +57,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: 'activities',
               pageBuilder: (context, state) => MaterialPage(
-                child: PlaceholderPage(title: '대외활동'), // 대외활동
+                child: Employment(), // 대외활동
               ),
             ),
             GoRoute(
