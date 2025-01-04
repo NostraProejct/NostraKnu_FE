@@ -8,28 +8,45 @@ class NoticeMain extends StatefulWidget {
 }
 
 class _NoticeMain extends State<NoticeMain> {
-  int currentPage = 1;
-  final int itemsPerPage = 5;
-  final int totalPages = 10;
+  int currentPageGroupIndex = 1; // 현재 페이지 그룹 인덱스
+  int currentPage = 1; // 현재 선택된 페이지
+  final int itemsPerPage = 5; // 한 페이지당 항목 수
 
-  final List<Map<String, String>> notices = List.generate(
-    50, (index) => {
+  final List<Map<String, String>> notices = List.generate(63, (index) => {
       "id": "${1045 - index}",
       "title": "공지사항 ${index + 1} 제목",
       "date": "24.10.${(index % 30 + 1).toString().padLeft(2, '0')}"
     },
   );
 
-  List<Map<String, String>> getCurrentPageNotices() {
+  // 데이터 기반으로 총 페이지 계산
+  int get totalPages => (notices.length / itemsPerPage).ceil();
+
+  // 현재 페이지 그룹에 해당하는 페이지 목록 반환
+  List<int> getPageNumbersForCurrentGroup() {
+    int startPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
+    int endPage = startPage + itemsPerPage - 1;
+    if (endPage > totalPages) endPage = totalPages;
+    return List.generate(endPage - startPage + 1, (index) => startPage + index);
+  }
+
+  // 현재 페이지에 해당하는 공지사항 가져오기
+  List<Map<String, String>> getNoticesForCurrentPage() {
     int startIndex = (currentPage - 1) * itemsPerPage;
     int endIndex = startIndex + itemsPerPage;
+
+    // 데이터가 없는 페이지에 대한 처리
+    if (startIndex >= notices.length) {
+      return []; // 빈 리스트 반환
+    }
+
     return notices.sublist(
         startIndex, endIndex > notices.length ? notices.length : endIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentNotices = getCurrentPageNotices();
+    final currentPageNumbers = getPageNumbersForCurrentGroup();
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -37,12 +54,11 @@ class _NoticeMain extends State<NoticeMain> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: currentNotices.length,
+              itemCount: getNoticesForCurrentPage().length,
               itemBuilder: (context, index) {
-                final notice = currentNotices[index];
+                final notice = getNoticesForCurrentPage()[index];
                 return GestureDetector(
                   onTap: () {
-                    // 공지사항 상세 페이지로 이동
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -115,20 +131,19 @@ class _NoticeMain extends State<NoticeMain> {
                 IconButton(
                   icon: Icon(Icons.arrow_back_ios, size: 16),
                   onPressed: () {
-                    if (currentPage > 1) {
+                    if (currentPageGroupIndex > 1) {
                       setState(() {
-                        currentPage--;
+                        currentPageGroupIndex--;
+                        currentPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
                       });
                     }
                   },
                 ),
-                ...List.generate(5, (index) {
-                  int page = currentPage - 2 + index;
-                  if (page < 1 || page > totalPages) return SizedBox();
+                ...currentPageNumbers.map((page) {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        currentPage = page;
+                        currentPage = page; // 선택된 페이지 변경
                       });
                     },
                     child: Container(
@@ -136,32 +151,30 @@ class _NoticeMain extends State<NoticeMain> {
                       padding:
                       EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                       decoration: BoxDecoration(
-                        color:
-                        page == currentPage ? Colors.blue : Colors.white,
+                        color: page == currentPage ? Colors.blue : Colors.white,
                         borderRadius: BorderRadius.circular(4.0),
                         border: Border.all(
-                          color:
-                          page == currentPage ? Colors.blue : Colors.grey,
+                          color: page == currentPage ? Colors.blue : Colors.grey,
                         ),
                       ),
                       child: Text(
                         "$page",
                         style: TextStyle(
                           fontSize: 14,
-                          color: page == currentPage
-                              ? Colors.white
-                              : Colors.black,
+                          color:
+                          page == currentPage ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
                   );
-                }),
+                }).toList(),
                 IconButton(
                   icon: Icon(Icons.arrow_forward_ios, size: 16),
                   onPressed: () {
-                    if (currentPage < totalPages) {
+                    if ((currentPageGroupIndex) * itemsPerPage < totalPages) {
                       setState(() {
-                        currentPage++;
+                        currentPageGroupIndex++;
+                        currentPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
                       });
                     }
                   },
@@ -174,6 +187,7 @@ class _NoticeMain extends State<NoticeMain> {
     );
   }
 }
+
 
 // 공지사항 상세 화면
 class NoticeDetailScreen extends StatelessWidget {
