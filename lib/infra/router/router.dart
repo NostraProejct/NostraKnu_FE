@@ -9,6 +9,8 @@ import '../../home/home_screen.dart';
 import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
 import '../../home/notice/title/notice_title.dart';
+import '../../home/cafeteria/cafeteriaMain.dart';
+import '../../home/cafeteria/title/cafeteria_title.dart';
 import '../../home/mainpage.dart';
 
 // GoRouter 설정
@@ -20,6 +22,13 @@ final GoRouter router = GoRouter(
         if (state.fullPath == '/notice') {
           return MainPage(
             customTitle: NoticeTitleWidget(), // 커스텀 제목
+            customBackgroundColor: Colors.grey[200], // 커스텀 배경색
+            child: child,
+          );
+        }
+        if (state.fullPath == '/cafeteria') {
+          return MainPage(
+            customTitle: CafeteriaTitleWidget(), // 커스텀 제목
             customBackgroundColor: Colors.grey[200], // 커스텀 배경색
             child: child,
           );
@@ -43,15 +52,13 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: 'notice',
-              pageBuilder: (context, state) => MaterialPage(
-                child: NoticeMain(), // 공지사항
-              ),
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(NoticeMain()), // 공지사항
             ),
             GoRoute(
               path: 'cafeteria',
-              pageBuilder: (context, state) => MaterialPage(
-                child: PlaceholderPage(title: '학식'), // 학식
-              ),
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(CafeteriaMain()), // 학식
             ),
             GoRoute(
               path: 'activities',
