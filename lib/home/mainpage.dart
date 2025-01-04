@@ -41,12 +41,12 @@ class _MainPageState extends State<MainPage> {
       activeIcon: Icon(Icons.location_on, color: Colors.black),
     ),
     BottomNavigationBarItem(
-      label: 'My Page',
-      icon: Icon(Icons.person_outline),
-      activeIcon: Icon(Icons.person, color: Colors.black),
+      label: 'Community',
+      icon: Icon(Icons.people_outline),
+      activeIcon: Icon(Icons.people, color: Colors.black),
     ),
     BottomNavigationBarItem(
-      label: 'Settings',
+      label: 'My Page',
       icon: Icon(Icons.person_outline),
       activeIcon: Icon(Icons.settings, color: Colors.black),
     ),
@@ -73,25 +73,25 @@ class _MainPageState extends State<MainPage> {
   ];
 
   final List<Color> _backgroundColors = [
+    Colors.grey[200]!,  // Home 화면 색상
+    Colors.white,        // Map 화면 색상
+    Colors.white,        // My Page 화면 색상
+    Colors.white,        // Settings 화면 색상
+  ];
+
+  final List<Color> _titleBackgroundColors = [
     Colors.brown[100]!,  // Home 화면 색상
     Colors.white,        // Map 화면 색상
     Colors.white,        // My Page 화면 색상
     Colors.white,        // Settings 화면 색상
   ];
 
-  void _navigateToCommunityList() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CommunityList()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
       appBar: AppBar(
-        backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
+        backgroundColor: widget.customBackgroundColor ?? _titleBackgroundColors[_currentIndex],
         elevation: 0,
         title: widget.customTitle ?? _titles[_currentIndex],
         actions: _currentIndex == 0 ? [
