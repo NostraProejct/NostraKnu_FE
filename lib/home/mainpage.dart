@@ -1,35 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:nostra/community/main/communityMain.dart';
+
 import 'package:nostra/home/title/home_title.dart';
-
-import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
-import 'home_screen.dart';
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
 
-  final Widget child;
-  final Widget? customTitle;  // 추가
-  final Color? customBackgroundColor;  // 추가
+  final StatefulNavigationShell navigationShell;
+  final Widget? customTitle;
+  final Color? customBackgroundColor;
 
   const MainPage({
-    super.key,
-    required this.child,
+    Key? key,
+    required this.navigationShell,
     this.customTitle,
     this.customBackgroundColor
-  });
+  }) : super(key: key);
 
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-
-class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
-
-  final List<BottomNavigationBarItem> bottomItems = [
+  static const List<BottomNavigationBarItem> bottomItems = [
     BottomNavigationBarItem(
       label: 'Home',
       icon: Icon(Icons.home_outlined),
@@ -53,15 +41,8 @@ class _MainPageState extends State<MainPage> {
 
   ];
 
-  final List<Widget> _pages = [
-    HomeScreen(),
-    Center(child: Text("Map Screen")), // 임시 Map 화면
-    CommunityMain(),
-    Center(child: Text("Setting Screen"))
-  ];
-
   // 각 페이지에 해당하는 제목
-  final List<Widget> _titles = [
+  static final List<Widget> _titles = [
     HomeTitleWidget(),
     Text(
       'Map',
@@ -72,29 +53,31 @@ class _MainPageState extends State<MainPage> {
     ),
   ];
 
-  final List<Color> _backgroundColors = [
-    Colors.grey[200]!,  // Home 화면 색상
-    Colors.white,        // Map 화면 색상
-    Colors.white,        // My Page 화면 색상
-    Colors.white,        // Settings 화면 색상
+  static final List<Color> _backgroundColors = [
+    Colors.grey[200]!,   // 홈창 색상
+    Colors.white,        // 맵창 색상
+    Colors.white,        // 커뮤니티창 색상
+    Colors.white,        // 마이페이지창 색상
   ];
 
-  final List<Color> _titleBackgroundColors = [
-    Colors.brown[100]!,  // Home 화면 색상
-    Colors.white,        // Map 화면 색상
-    Colors.white,        // My Page 화면 색상
-    Colors.white,        // Settings 화면 색상
+  static final List<Color> _titleBackgroundColors = [
+    Colors.brown[100]!,  // 홈창 상단바 색상
+    Colors.white,        // 맵창 상단바 색상
+    Colors.white,        // 커뮤니티창 상단바 색상
+    Colors.white,        // 마이페이지창 상단바 색상
   ];
 
   @override
   Widget build(BuildContext context) {
+    final int currentIndex = navigationShell.currentIndex;
+
     return Scaffold(
-      backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
+      backgroundColor: customBackgroundColor ?? _backgroundColors[currentIndex],
       appBar: AppBar(
-        backgroundColor: widget.customBackgroundColor ?? _titleBackgroundColors[_currentIndex],
+        backgroundColor: customBackgroundColor ?? _titleBackgroundColors[currentIndex],
         elevation: 0,
-        title: widget.customTitle ?? _titles[_currentIndex],
-        actions: _currentIndex == 0 ? [
+        title: customTitle ?? _titles[currentIndex],
+        actions: currentIndex == 0 ? [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black87),
             onPressed: () {
@@ -110,41 +93,17 @@ class _MainPageState extends State<MainPage> {
               radius: 16,
             ),
           ),
-        ]
-            : null,
+        ] : null,
       ),
-      body: widget.child,
+      body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            switch(index) {
-              case 0:
-                context.go('/');
-                setState(() {
-                  _currentIndex = index;
-                });
-                break;
-              case 1:
-                context.go('/map');
-                setState(() {
-                  _currentIndex = index;
-                });
-                break;
-              case 2:
-                context.go('/community');
-                setState(() {
-                  _currentIndex = index;
-                });
-                break;
-              case 3:
-                context.go('/settings');
-                setState(() {
-                  _currentIndex = index;
-                });
-                break;
-            }
-          });
+          if (index == currentIndex) {
+            navigationShell.goBranch(index, initialLocation: true);
+          } else {
+            navigationShell.goBranch(index);
+          }
         },
         items: bottomItems,
         backgroundColor: Colors.white,
