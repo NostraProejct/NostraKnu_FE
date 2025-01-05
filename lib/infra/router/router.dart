@@ -11,6 +11,7 @@ import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
 import '../../home/notice/title/notice_title.dart';
 import '../../home/mainpage.dart';
+import '../../setting/settingPage.dart';
 
 // GoRouter 설정
 final GoRouter router = GoRouter(
@@ -103,7 +104,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: '/settings',
           pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(Text("설정 화면 준비 중")),
+              _customTransitionPage(SettingPage()),
         ),
       ],
     ),

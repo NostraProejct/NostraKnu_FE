@@ -6,6 +6,8 @@ import 'package:nostra/home/title/home_title.dart';
 
 import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
+import '../setting/settingPage.dart';
+import '../setting/title/setting_title.dart';
 import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
@@ -57,7 +59,7 @@ class _MainPageState extends State<MainPage> {
     HomeScreen(),
     Center(child: Text("Map Screen")), // 임시 Map 화면
     CommunityMain(),
-    Center(child: Text("Setting Screen"))
+    SettingPage(),
   ];
 
   // 각 페이지에 해당하는 제목
@@ -67,9 +69,7 @@ class _MainPageState extends State<MainPage> {
       'Map',
     ),
     CommunityTitle(),
-    Text(
-      'Settings',
-    ),
+    SettingTitleWidget(),
   ];
 
   final List<Color> _backgroundColors = [
