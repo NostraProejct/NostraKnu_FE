@@ -3,108 +3,109 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/write/communityWrite.dart';
 
 import '../../community/list/communityList.dart';
-import '../../community/list/title/communityListTitle.dart';
 import '../../community/main/communityMain.dart';
+
 import '../../home/home_screen.dart';
 import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
-import '../../home/notice/title/notice_title.dart';
 import '../../home/cafeteria/cafeteriaMain.dart';
-import '../../home/cafeteria/title/cafeteria_title.dart';
 import '../../home/mainpage.dart';
 
-// GoRouter 설정
+final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> mapNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> communityNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> settingsNavigatorKey = GlobalKey<NavigatorState>();
+
 final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
-    ShellRoute(
-      builder: (context, state, child) {
-        if (state.fullPath == '/notice') {
-          return MainPage(
-            customTitle: NoticeTitleWidget(), // 커스텀 제목
-            customBackgroundColor: Colors.grey[200], // 커스텀 배경색
-            child: child,
-          );
-        }
-        if (state.fullPath == '/cafeteria') {
-          return MainPage(
-            customTitle: CafeteriaTitleWidget(), // 커스텀 제목
-            customBackgroundColor: Colors.grey[200], // 커스텀 배경색
-            child: child,
-          );
-        }
-        if (state.fullPath == '/community/list/write') {
-          return MainPage(
-            customTitle: CommunityListTitle(), // 커스텀 제목
-            customBackgroundColor: Colors.white, // 커스텀 배경색
-            child: child,
-          );
-        }
-        return MainPage(child: child);
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainPage(navigationShell: navigationShell,);
       },
-      routes: [
+      branches: [
         // 홈 창
-        GoRoute(
-          path: '/',
-          pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(HomeScreen()),
-          // 홈창 하위 페이지
+        StatefulShellBranch(
+          navigatorKey: homeNavigatorKey,
           routes: [
             GoRoute(
-              path: 'notice',
+              path: '/',
               pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(NoticeMain()), // 공지사항
-            ),
-            GoRoute(
-              path: 'cafeteria',
-              pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(CafeteriaMain()), // 학식
-            ),
-            GoRoute(
-              path: 'activities',
-              pageBuilder: (context, state) => MaterialPage(
-                child: PlaceholderPage(title: '대외활동'), // 대외활동
-              ),
-            ),
-            GoRoute(
-              path: 'employment',
-              pageBuilder: (context, state) => MaterialPage(
-                child: PlaceholderPage(title: '취업'), // 취업
-              ),
-            ),
-          ],
-        ),
-        // 맵 창
-        GoRoute(
-          path: '/map',
-          pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(Text("맵 화면 준비 중")),
-        ),
-        // 커뮤니티 창
-        GoRoute(
-          path: '/community',
-          pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(CommunityMain()),
-          routes: [
-            GoRoute(
-              path: 'list',
-              pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(CommunityList()),
+                  _customTransitionPage(HomeScreen()),
+              // 홈창 하위 페이지
               routes: [
                 GoRoute(
-                  path: 'write',
+                  path: 'notice',
                   pageBuilder: (BuildContext context, GoRouterState state) =>
-                      _customTransitionPage(CommunityWrite()),
+                      _customTransitionPage(NoticeMain()), // 공지사항
                 ),
-              ]
+                GoRoute(
+                  path: 'cafeteria',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(CafeteriaMain()), // 학식
+                ),
+                GoRoute(
+                  path: 'activities',
+                  pageBuilder: (context, state) => MaterialPage(
+                    child: PlaceholderPage(title: '대외활동'), // 대외활동
+                  ),
+                ),
+                GoRoute(
+                  path: 'employment',
+                  pageBuilder: (context, state) => MaterialPage(
+                    child: PlaceholderPage(title: '취업'), // 취업
+                  ),
+                ),
+              ],
             ),
-          ],
+          ]
+        ),
+        // 맵 창
+        StatefulShellBranch(
+          navigatorKey: mapNavigatorKey,
+          routes: [
+            GoRoute(
+              path: '/map',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(Text("맵 화면 준비 중")),
+            ),
+          ]
+        ),
+        // 커뮤니티 창
+        StatefulShellBranch(
+          navigatorKey: communityNavigatorKey,
+          routes: [
+            GoRoute(
+              path: '/community',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(CommunityMain()),
+              routes: [
+                GoRoute(
+                    path: 'list',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(CommunityList()),
+                    routes: [
+                      GoRoute(
+                        path: 'write',
+                        pageBuilder: (BuildContext context, GoRouterState state) =>
+                            _customTransitionPage(CommunityWrite()),
+                      ),
+                    ]
+                ),
+              ],
+            ),
+          ]
         ),
         // 설정 창
-        GoRoute(
-          path: '/settings',
-          pageBuilder: (BuildContext context, GoRouterState state) =>
-              _customTransitionPage(Text("설정 화면 준비 중")),
+        StatefulShellBranch(
+          navigatorKey: settingsNavigatorKey,
+          routes: [
+            GoRoute(
+              path: '/settings',
+              pageBuilder: (BuildContext context, GoRouterState state) =>
+                  _customTransitionPage(Text("설정 화면 준비 중")),
+            ),
+          ]
         ),
       ],
     ),

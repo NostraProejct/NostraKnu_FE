@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NoticeMain extends StatefulWidget {
   @override
@@ -8,9 +9,9 @@ class NoticeMain extends StatefulWidget {
 }
 
 class _NoticeMain extends State<NoticeMain> {
-  int currentPageGroupIndex = 1; // 현재 페이지 그룹 인덱스
-  int currentPage = 1; // 현재 선택된 페이지
-  final int itemsPerPage = 5; // 한 페이지당 항목 수
+  int currentPageGroupIndex = 1;
+  int currentPage = 1;
+  final int itemsPerPage = 5;
 
   final List<Map<String, String>> notices = List.generate(63, (index) => {
       "id": "${1045 - index}",
@@ -50,6 +51,33 @@ class _NoticeMain extends State<NoticeMain> {
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        backgroundColor: Colors.grey[200],
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          iconSize: 26,
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          '공지사항',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.black),
+            iconSize: 26,
+            onPressed: () {
+              // 검색 기능
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
@@ -189,7 +217,6 @@ class _NoticeMain extends State<NoticeMain> {
 }
 
 
-// 공지사항 상세 화면
 class NoticeDetailScreen extends StatelessWidget {
   final String id;
   final String title;
