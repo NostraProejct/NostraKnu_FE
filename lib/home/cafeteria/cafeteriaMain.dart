@@ -45,7 +45,7 @@ class _CafeteriaMain extends State<CafeteriaMain> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
           iconSize: 26,
           onPressed: () => context.pop(),
         ),

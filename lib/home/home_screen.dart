@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
           // 학식, 대외활동, 취업 섹션
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(left: 16.0, top: 20.0, right: 16.0),
               child: Column(
                 children: [
                   // 학식과 대외활동
@@ -100,27 +100,24 @@ class HomeScreen extends StatelessWidget {
                       FeatureSection(
                         title: '학식',
                         onTap: () {
-                          // 학식 페이지로 이동
-                          context.go('/cafeteria');
+                          context.go('/cafeteria'); // 학식 페이지로 이동
                         },
                       ),
                       FeatureSection(
                         title: '대외활동',
                         onTap: () {
-                          // 대외활동 페이지로 이동
-                          context.go('/activities');
+                          context.go('/activities'); // 대외활동 페이지로 이동
                         },
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 20),
                   // 취업
                   FeatureSection(
                     title: '취업',
                     isFullWidth: true,
                     onTap: () {
-                      // 취업 페이지로 이동
-                      context.go('/employment');
+                      context.go('/employment'); // 취업 페이지로 이동
                     },
                   ),
                 ],
@@ -148,19 +145,22 @@ class FeatureSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 텍스트 (카드 위에 위치)
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+          Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.list, color: Colors.black),
+                onPressed: null,
               ),
-            ),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
           ),
-          // 카드 배경
           Container(
             width: isFullWidth ? double.infinity : (MediaQuery.of(context).size.width - 50) / 2,
             height: 150,
