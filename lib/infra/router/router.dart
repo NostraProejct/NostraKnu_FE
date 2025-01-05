@@ -3,14 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/write/communityWrite.dart';
 
 import '../../community/list/communityList.dart';
-import '../../community/list/title/communityListTitle.dart';
 import '../../community/main/communityMain.dart';
+
 import '../../home/home_screen.dart';
 import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
-import '../../home/notice/title/notice_title.dart';
 import '../../home/cafeteria/cafeteriaMain.dart';
-import '../../home/cafeteria/title/cafeteria_title.dart';
 import '../../home/mainpage.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -22,32 +20,8 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
     StatefulShellRoute.indexedStack(
-      builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) {
-        Widget? customTitle;
-        Color? customBackgroundColor;
-
-        final location = state.uri.path;
-
-        switch (location) {
-          case '/notice':
-            customTitle = const NoticeTitleWidget();
-            customBackgroundColor = Colors.grey[200];
-            break;
-          case '/cafeteria':
-            customTitle = const CafeteriaTitleWidget();
-            customBackgroundColor = Colors.grey[200];
-            break;
-          case '/community/list/write':
-            customTitle = const CommunityListTitle();
-            customBackgroundColor = Colors.white;
-            break;
-        }
-
-        return MainPage(
-          navigationShell: navigationShell,
-          customTitle: customTitle,
-          customBackgroundColor: customBackgroundColor,
-        );
+      builder: (context, state, navigationShell) {
+        return MainPage(navigationShell: navigationShell,);
       },
       branches: [
         // 홈 창
