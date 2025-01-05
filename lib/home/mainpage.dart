@@ -38,7 +38,6 @@ class MainPage extends StatelessWidget {
       icon: Icon(Icons.person_outline),
       activeIcon: Icon(Icons.settings, color: Colors.black),
     ),
-
   ];
 
   // 각 페이지에 해당하는 제목
