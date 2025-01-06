@@ -90,29 +90,6 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.customBackgroundColor ?? _backgroundColors[_currentIndex],
-      appBar: AppBar(
-        backgroundColor: widget.customBackgroundColor ?? _titleBackgroundColors[_currentIndex],
-        elevation: 0,
-        title: widget.customTitle ?? _titles[_currentIndex],
-        actions: _currentIndex == 0 ? [
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.black87),
-            onPressed: () {
-              // 검색 버튼 동작
-            },
-          ),
-          GestureDetector(
-            onTap: () {
-              // 프로필 사진 클릭 시 동작
-            },
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.jpg'), // 프로필 이미지
-              radius: 16,
-            ),
-          ),
-        ]
-            : null,
-      ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

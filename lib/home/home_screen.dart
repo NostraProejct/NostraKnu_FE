@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                       title: '대외활동',
                       onTap: () {
                         // 대외활동 페이지로 이동
-                        context.go('/activities');
+                        context.go('/activity');
                       },
                     ),
                   ],
