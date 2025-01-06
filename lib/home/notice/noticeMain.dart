@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../home/notice/noticeDetail.dart';
-
 class NoticeMain extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -38,13 +36,11 @@ class _NoticeMain extends State<NoticeMain> {
     int startIndex = (currentPage - 1) * itemsPerPage;
     int endIndex = startIndex + itemsPerPage;
 
-    // 데이터가 없는 페이지에 대한 처리
+    // 데이터가 없는 페이지 빈 리스트 반환
     if (startIndex >= notices.length) {
-      return []; // 빈 리스트 반환
+      return [];
     }
-
-    return notices.sublist(
-        startIndex, endIndex > notices.length ? notices.length : endIndex);
+    return notices.sublist(startIndex, endIndex > notices.length ? notices.length : endIndex);
   }
 
   @override
@@ -89,16 +85,11 @@ class _NoticeMain extends State<NoticeMain> {
                 final notice = getNoticesForCurrentPage()[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NoticeDetail(
-                          id: notice["id"]!,
-                          title: notice["title"]!,
-                          date: notice["date"]!,
-                        ),
-                      ),
-                    );
+                    context.push('/notice/${notice["id"]}', extra: {
+                      "id": notice["id"]!,
+                      "title": notice["title"]!,
+                      "date": notice["date"]!,
+                    });
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 9.0, horizontal: 16.0),
@@ -126,8 +117,8 @@ class _NoticeMain extends State<NoticeMain> {
                           ),
                         ),
                         SizedBox(height: 4),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 20.0),
+                        Container(
+                          height: 44,
                           child: Text(
                             notice["title"]!,
                             style: TextStyle(
