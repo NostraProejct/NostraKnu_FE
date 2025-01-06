@@ -8,7 +8,9 @@ import '../../community/main/communityMain.dart';
 import '../../home/home_screen.dart';
 import '../../home/placeholderPage.dart';
 import '../../home/notice/noticeMain.dart';
+import '../../home/notice/noticeDetail.dart';
 import '../../home/cafeteria/cafeteriaMain.dart';
+import '../../home/employment/EmploymentMain.dart';
 import '../../home/mainpage.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -38,11 +40,26 @@ final GoRouter router = GoRouter(
                   path: 'notice',
                   pageBuilder: (BuildContext context, GoRouterState state) =>
                       _customTransitionPage(NoticeMain()), // 공지사항
+                  routes: [
+                    GoRoute(
+                      path: ':id',
+                      pageBuilder: (context, state) {
+                        final params = state.extra as Map<String, String>? ?? {};
+                        return MaterialPage(
+                          child: NoticeDetail(
+                            id: params['id'] ?? '알 수 없음',
+                            title: params['title'] ?? '알 수 없음',
+                            date: params['date'] ?? '알 수 없음',
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 GoRoute(
                   path: 'cafeteria',
                   pageBuilder: (BuildContext context, GoRouterState state) =>
-                      _customTransitionPage(CafeteriaMain()), // 학식
+                    _customTransitionPage(CafeteriaMain()), // 학식
                 ),
                 GoRoute(
                   path: 'activities',
@@ -52,9 +69,8 @@ final GoRouter router = GoRouter(
                 ),
                 GoRoute(
                   path: 'employment',
-                  pageBuilder: (context, state) => MaterialPage(
-                    child: PlaceholderPage(title: '취업'), // 취업
-                  ),
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                    _customTransitionPage(EmploymentMain()), // 취업
                 ),
               ],
             ),
