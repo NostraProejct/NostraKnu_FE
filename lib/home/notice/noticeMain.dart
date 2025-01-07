@@ -169,8 +169,7 @@ class _NoticeMain extends State<NoticeMain> {
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 4.0),
-                      padding:
-                      EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                       decoration: BoxDecoration(
                         color: page == currentPage ? Colors.blue : Colors.white,
                         borderRadius: BorderRadius.circular(4.0),

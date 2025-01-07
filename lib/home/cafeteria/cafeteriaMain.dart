@@ -12,7 +12,7 @@ class _CafeteriaMain extends State<CafeteriaMain> {
 
   final List<String> locations = ['새롬관', '이룸관', '동준관', '영호관', '현권관'];
   final List<List<String>> menus = [
-    ['밥 제육 된장', '밥 닭볶음탕', '밥 불고기', '밥 불고기', '밥 불고기'],
+    ['밥 제육볶음\n계란말이\n된장국', '밥 닭볶음탕', '밥 불고기', '밥 불고기', '밥 불고기'],
     ['밥 갈비탕', '밥 오징어볶음', '밥 김치찌개', '밥 불고기', '밥 불고기'],
     ['밥 돈까스', '밥 순두부찌개', '밥 비빔밥', '밥 불고기', '밥 불고기'],
     ['밥 삼계탕', '밥 떡볶이', '밥 생선구이', '밥 불고기', '밥 불고기'],
@@ -123,7 +123,7 @@ class _CafeteriaMain extends State<CafeteriaMain> {
                               Expanded(
                                 child: Container(
                                   height: 120,
-                                  padding: EdgeInsets.all(13.0),
+                                  padding: EdgeInsets.all(15.0),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(11.0),
@@ -138,8 +138,9 @@ class _CafeteriaMain extends State<CafeteriaMain> {
                                   child: Text(
                                     menus[index][menuIndex], // 메뉴 데이터
                                     style: TextStyle(
-                                      fontSize: 18,
                                       color: Colors.black87,
+                                      height: 1.65,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),
