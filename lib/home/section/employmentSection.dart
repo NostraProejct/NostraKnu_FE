@@ -33,7 +33,7 @@ class EmploymentSection extends StatelessWidget {
             width: isFullWidth ? double.infinity : (MediaQuery.of(context).size.width - 50) / 2,
             height: 150,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: Colors.grey[350],
               borderRadius: BorderRadius.circular(12),
             ),
           ),

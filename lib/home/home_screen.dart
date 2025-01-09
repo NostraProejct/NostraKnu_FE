@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: _appBar(),
       body: _body(),
     );
@@ -49,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [
         IconButton(
           icon: Icon(Icons.search, color: Colors.black87),
+          iconSize: 29,
           onPressed: () {
             // 검색 버튼 동작
           },
@@ -59,9 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           child: CircleAvatar(
             backgroundImage: AssetImage('assets/profile.jpg'), // 프로필 이미지
-            radius: 16,
+            radius: 15,
           ),
         ),
+        SizedBox(width: 14),
       ],
     );
   }
