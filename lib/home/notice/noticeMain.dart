@@ -83,60 +83,72 @@ class _NoticeMain extends State<NoticeMain> {
               itemCount: getNoticesForCurrentPage().length,
               itemBuilder: (context, index) {
                 final notice = getNoticesForCurrentPage()[index];
-                return GestureDetector(
-                  onTap: () {
-                    context.push('/notice/${notice["id"]}', extra: {
-                      "id": notice["id"]!,
-                      "title": notice["title"]!,
-                      "date": notice["date"]!,
-                    });
-                  },
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 9.0, horizontal: 16.0),
-                    padding: EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
+                // 공지사항 글 박스
+                return Container(
+                  margin: EdgeInsets.symmetric(vertical: 9.0, horizontal: 16.0),
+                  child: Material(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: 1.0, // 약간의 그림자 효과
+                    child: InkWell(
                       borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          notice["id"]!,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w500,
+                      highlightColor: Colors.blue.withOpacity(0.2), // 클릭 시 강조 색상
+                      splashColor: Colors.blue.withOpacity(0.1), // 잔물결 효과 색상
+                      onTap: () {
+                        context.push('/notice/${notice["id"]}', extra: {
+                          "id": notice["id"]!,
+                          "title": notice["title"]!,
+                          "date": notice["date"]!,
+                        });
+                      },
+                      onHighlightChanged: (isHighlighted) {
+                        // 클릭 시 추가적인 테두리 효과
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        padding: EdgeInsets.all(12.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                            color: Colors.grey.withOpacity(0.5),
+                            width: 0.8,
                           ),
                         ),
-                        SizedBox(height: 4),
-                        Container(
-                          height: 44,
-                          child: Text(
-                            notice["title"]!,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              notice["id"]!,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
+                            SizedBox(height: 4),
+                            Container(
+                              height: 44,
+                              child: Text(
+                                notice["title"]!,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              notice["date"]!,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 4),
-                        Text(
-                          notice["date"]!,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 );
@@ -145,7 +157,7 @@ class _NoticeMain extends State<NoticeMain> {
           ),
           // 페이지네이션 바
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 14.0),
+            padding: const EdgeInsets.only(top: 10.0, bottom: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
