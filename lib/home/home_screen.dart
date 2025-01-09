@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                       title: '대외활동',
                       onTap: () {
                         // 대외활동 페이지로 이동
-                        context.go('/activity');
+                        context.go('/employment');
                       },
                     ),
                   ],
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   isFullWidth: true,
                   onTap: () {
                     // 취업 페이지로 이동
-                    context.go('/employment');
+                    context.go('/activity');
                   },
                 ),
               ],

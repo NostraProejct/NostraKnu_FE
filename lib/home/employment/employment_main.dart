@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ActivityMain extends StatefulWidget {
-  const ActivityMain({super.key});
+class EmploymentMain extends StatefulWidget {
+  const EmploymentMain({super.key});
 
   @override
-  State<ActivityMain> createState() => _ActivityMainState();
+  State<EmploymentMain> createState() => _EmploymentMainState();
 }
 
-class _ActivityMainState extends State<ActivityMain> {
+class _EmploymentMainState extends State<EmploymentMain> {
   String _selectedCategory = '전체';
 
   @override

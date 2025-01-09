@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nostra/community/write/communityWrite.dart';
-import 'package:nostra/home/activity/activity.main.dart';
-import 'package:nostra/home/employment/employment.main.dart';
+import 'package:nostra/home/activity/activity_main.dart';
+import 'package:nostra/home/employment/employment_main.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/list/title/communityListTitle.dart';
@@ -56,13 +56,13 @@ final GoRouter router = GoRouter(
               ),
             ),
             GoRoute(
-              path: 'activity',
+              path: 'employment',
               pageBuilder: (context, state) => MaterialPage(
                 child: ActivityMain(), // 대외활동
               ),
             ),
             GoRoute(
-              path: 'employment',
+              path: 'activity',
               pageBuilder: (context, state) => MaterialPage(
                 child: EmploymentMain(), // 취업
               ),

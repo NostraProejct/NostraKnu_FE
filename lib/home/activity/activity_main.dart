@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'acitivity_total.dart';
+import 'activity_club.dart';
+import 'activity_competition.dart';
+import 'activity_volunteer.dart';
+import 'activity_study.dart';
 
-class EmploymentMain extends StatefulWidget {
-  const EmploymentMain({super.key});
+class ActivityMain extends StatefulWidget {
+  const ActivityMain({super.key});
 
   @override
-  State<EmploymentMain> createState() => _EmploymentMainState();
+  State<ActivityMain> createState() => _ActivityMainState();
 }
 
-class _EmploymentMainState extends State<EmploymentMain>
+class _ActivityMainState extends State<ActivityMain>
     with SingleTickerProviderStateMixin {
   late TabController _tabController; // TabController
   final List<String> tabTitles = ['전체', '동아리', '대회', '봉사', '스터디'];
@@ -37,7 +42,7 @@ class _EmploymentMainState extends State<EmploymentMain>
     return AppBar(
       centerTitle: true,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+        icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
         iconSize: 20,
         onPressed: () => context.pop(),
       ),
@@ -58,9 +63,6 @@ class _EmploymentMainState extends State<EmploymentMain>
           child: TabBar(
             dividerColor: Colors.white,
             controller: _tabController,
-            indicator: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-            ),
             labelColor: Colors.black, // 선택된 탭 텍스트 색상
             unselectedLabelColor: Colors.grey, // 선택되지 않은 탭 텍스트 색상
             unselectedLabelStyle: const TextStyle(fontSize: 15), // 선택되지 않은 탭 텍스트 스타일
@@ -77,7 +79,6 @@ class _EmploymentMainState extends State<EmploymentMain>
               );
             }).toList(),
           ),
-
         ),
       ),
     );
@@ -86,7 +87,13 @@ class _EmploymentMainState extends State<EmploymentMain>
   Widget _body() {
     return TabBarView(
       controller: _tabController,
-      children: [],
+      children: const [
+        ActivityTotal(),
+        ActivityClub(),
+        ActivityCompetition(),
+        ActivityVolunteer(),
+        ActivityStudy(),
+      ],
     );
   }
 }
