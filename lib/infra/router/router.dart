@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nostra/community/detail/communityDetail.dart';
-import 'package:nostra/community/detail/title/communityDetailTitle.dart';
 import 'package:nostra/community/write/communityWrite.dart';
-import 'package:nostra/community/write/title/CommunityWriteTitle.dart';
 
 import '../../community/list/communityList.dart';
-import '../../community/list/data/testData.dart';
 import '../../community/list/title/communityListTitle.dart';
 import '../../community/main/communityMain.dart';
 import '../../home/home_screen.dart';
@@ -28,24 +24,10 @@ final GoRouter router = GoRouter(
             child: child,
           );
         }
-        else if (state.fullPath == '/community/write') {
-          return MainPage(
-            customTitle: CommunityWriteTitle(), // 커스텀 제목
-            customBackgroundColor: Colors.white, // 커스텀 배경색
-            child: child,
-          );
-        }
-        else if (state.fullPath == '/community/list') {
+        if (state.fullPath == '/community/list/write') {
           return MainPage(
             customTitle: CommunityListTitle(), // 커스텀 제목
             customBackgroundColor: Colors.white, // 커스텀 배경색
-            child: child,
-          );
-        }
-        else if(state.fullPath == '/community/detailPost') {
-          return MainPage(
-            customTitle: CommunityDetailTitle(),
-            customBackgroundColor: Colors.white,
             child: child,
           );
         }
@@ -101,18 +83,13 @@ final GoRouter router = GoRouter(
               path: 'list',
               pageBuilder: (BuildContext context, GoRouterState state) =>
                   _customTransitionPage(CommunityList()),
-            ),
-            GoRoute(
-              path: 'write',
-              pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(CommunityWrite()),
-            ),
-            GoRoute(
-              path: 'detailPost',
-              pageBuilder: (BuildContext context, GoRouterState state) {
-                final Data_pre? item = state.extra as Data_pre?;
-                return _customTransitionPage(CommunityDetail());
-              }
+              routes: [
+                GoRoute(
+                  path: 'write',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(CommunityWrite()),
+                ),
+              ]
             ),
           ],
         ),
