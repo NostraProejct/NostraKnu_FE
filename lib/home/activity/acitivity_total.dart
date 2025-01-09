@@ -19,17 +19,17 @@ class _ActivityTotalState extends State<ActivityTotal> {
               children: List.generate(6, (index) {
                 final bool isSelected = index == selectedindex;
                 return GestureDetector(
-                   onTap: () {
-                     setState(() {
-                       selectedindex = index;
-                     });
-                   },
+                  onTap: () {
+                    setState(() {
+                      selectedindex = index;
+                    });
+                  },
                   child: _buildTimelineItem(isSelected),
                 );
               }),
             ),
           )
-        ),
+      ),
 
     );
   }
@@ -45,12 +45,12 @@ class _ActivityTotalState extends State<ActivityTotal> {
               width: 35,
               height: 35,
               decoration: BoxDecoration(
-                color: isSelected ? Colors.orange : Colors.grey[300],
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: isSelected ? Colors.orange : Colors.white, // 테두리 색상
-                  width: 4, // 테두리 두께
-                )
+                  color: isSelected ? Colors.orange : Colors.grey[300],
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: isSelected ? Colors.orange : Colors.white, // 테두리 색상
+                    width: 4, // 테두리 두께
+                  )
               ),
             ),
             Container(
