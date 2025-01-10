@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/setting/settingPage.dart';
 
 import '../../community/list/communityList.dart';
 import '../../community/main/communityMain.dart';
@@ -125,7 +126,7 @@ final GoRouter router = GoRouter(
               GoRoute(
                 path: '/settings',
                 pageBuilder: (BuildContext context, GoRouterState state) =>
-                    _customTransitionPage(Text("설정 화면 준비 중")),
+                    _customTransitionPage(SettingPage()),
               ),
             ]
         ),
