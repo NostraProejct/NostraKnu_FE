@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class CommunityListTitle extends StatelessWidget {
   const CommunityListTitle({super.key});

@@ -16,7 +16,7 @@ class _CommunityDetail extends State<CommunityDetail> {
     return Scaffold(
       appBar: AppBar(
         title: CommunityDetailTitle(),
-        leading: IconButton(
+        leading:           IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             context.go('/community/list');

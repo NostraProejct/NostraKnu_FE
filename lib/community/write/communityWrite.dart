@@ -37,93 +37,93 @@ class _CommunityWrite extends State<CommunityWrite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: CommunityWriteTitle(),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              context.go('/community/list');
-            },
-          ),
-          backgroundColor: Color(0xFFFAF5F2)
+        title: CommunityWriteTitle(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            context.go('/community/list');
+          },
+        ),
+        backgroundColor: Color(0xFFFAF5F2)
       ),
       backgroundColor: Color(0xFFFAF5F2),
       body: Container(
         child: Column(
           children: [
             Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 17, bottom: 3),
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: DropdownButton(
-                        elevation: 6,
-                        icon: Icon(Icons.keyboard_arrow_down),
-                        style: const TextStyle(color: Colors.black),
-                        value: dropdownValue,
-                        items: dropDownList.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem(
-                            value: value,
-                            child: Text(
-                              value,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold
-                              ),
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 17, bottom: 3),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: DropdownButton(
+                      elevation: 6,
+                      icon: Icon(Icons.keyboard_arrow_down),
+                      style: const TextStyle(color: Colors.black),
+                      value: dropdownValue,
+                      items: dropDownList.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem(
+                          value: value,
+                          child: Text(
+                            value,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
                             ),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            dropdownValue = value!;
-                          });
-                        },
-                      ),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? value) {
+                        setState(() {
+                          dropdownValue = value!;
+                        });
+                      },
                     ),
                   ),
-                  Container(
-                    height: 80,
-                    width: 370,
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top:7, left: 3, right: 7),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text('제목을 입력하세요', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                ),
+                Container(
+                  height: 80,
+                  width: 370,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top:7, left: 3, right: 7),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('제목을 입력하세요', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 3, top: 7),
+                        child: Container(
+                          height: 26,
+                          decoration: BoxDecoration(
+                              color: Color(0xFFFAF5F2),
+                              borderRadius: BorderRadius.circular(20)
+                          ),
+                          alignment: Alignment.center,
+                          child: TextField(
+                            maxLength: 32,
+                            style: TextStyle(fontSize: 14),
+                            decoration: InputDecoration(
+                                hintText: '제목 입력하기',
+                                hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 12)
+                            ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 3, top: 7),
-                          child: Container(
-                            height: 26,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFFAF5F2),
-                                borderRadius: BorderRadius.circular(20)
-                            ),
-                            alignment: Alignment.center,
-                            child: TextField(
-                              maxLength: 32,
-                              style: TextStyle(fontSize: 14),
-                              decoration: InputDecoration(
-                                  hintText: '제목 입력하기',
-                                  hintStyle: TextStyle(color: Colors.grey, fontSize: 10),
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.symmetric(vertical: 1, horizontal: 12)
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
-                ]
+                ),
+              ]
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
@@ -195,7 +195,7 @@ class _CommunityWrite extends State<CommunityWrite> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: AssetImage('assets/images/camera.png'),
+                        image: AssetImage('assets/images/Camera.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
