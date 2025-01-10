@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nostra/pages/Map.dart';
-import 'package:nostra/pages/MyTrip.dart';
-import 'package:nostra/pages/Community.dart';
-import 'package:nostra/pages/Menu.dart';
+
 
 
 class MainPage extends StatefulWidget {
