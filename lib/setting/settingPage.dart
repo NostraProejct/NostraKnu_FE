@@ -196,9 +196,9 @@ class _SettingPage extends State<SettingPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: const [
+                  children: [
                     Text(
-                      'assets/images/Notification.png',
+                      title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -244,7 +244,7 @@ class _SettingPage extends State<SettingPage> {
                 Row(
                   children: [
                     Image.asset(
-                      imgPath, width: 30,),
+                      'assets/images/Notification.png', width: 30,),
                     SizedBox(
                       width: 10,
                     ),
