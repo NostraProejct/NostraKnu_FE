@@ -16,7 +16,7 @@ class _CustomStepperState extends State<CustomStepper> {
         title: Text(
           '비공개',
           style: TextStyle(
-            color: currentStep == 0 ? Colors.black : Colors.white,
+            color: currentStep == 0 ? Colors.black : Colors.white38,
             fontSize: 14,
           ),
         ),
@@ -27,7 +27,7 @@ class _CustomStepperState extends State<CustomStepper> {
         title: Text(
           '친구만',
           style: TextStyle(
-            color: currentStep == 1 ? Colors.black : Colors.white,
+            color: currentStep == 1 ? Colors.black : Colors.white38,
             fontSize: 14,
           ),
         ),
@@ -38,7 +38,7 @@ class _CustomStepperState extends State<CustomStepper> {
         title: Text(
           '모두',
           style: TextStyle(
-            color: currentStep == 2 ? Colors.black : Colors.white,
+            color: currentStep == 2 ? Colors.black : Colors.white38,
             fontSize: 14,
           ),
         ),
