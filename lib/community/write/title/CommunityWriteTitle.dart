@@ -7,16 +7,9 @@ class CommunityWriteTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white, // 배경색 설정
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              context.go('/community/list');
-            },
-          ),
           const Text(
             '글쓰기',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
