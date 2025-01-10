@@ -70,7 +70,6 @@ flutter:
     - assets/images/HomeBackgroundPicture_1.png
     - assets/images/Favorites.png
     - assets/images/camera.png
-    - assets/profile/
 
   fonts:
     - family: AcmeRegular
