@@ -195,7 +195,7 @@ class _CommunityWrite extends State<CommunityWrite> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: AssetImage('assets/images/camera.png'),
+                        image: AssetImage('assets/images/Camera.png'),
                         fit: BoxFit.cover,
                       ),
                     ),

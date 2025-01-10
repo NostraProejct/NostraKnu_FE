@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/setting/manageProfile/settingManage.dart';
 import 'package:nostra/setting/settingPage.dart';
 
 import '../../community/list/communityList.dart';
@@ -15,7 +16,6 @@ import '../../home/cafeteria/cafeteriaMain.dart';
 import '../../home/employment/employmentMain.dart';
 import '../../home/activity/activityMain.dart';
 import '../../home/mainpage.dart';
-import '../../setting/settingPage.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> mapNavigatorKey = GlobalKey<NavigatorState>();
@@ -128,6 +128,13 @@ final GoRouter router = GoRouter(
                 path: '/settings',
                 pageBuilder: (BuildContext context, GoRouterState state) =>
                     _customTransitionPage(SettingPage()),
+                routes: [
+                  GoRoute(
+                    path: 'manage',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingManage()),
+                  )
+                ],
               ),
             ]
         ),
