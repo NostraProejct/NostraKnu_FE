@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/setting/lan/weight/settingFontWeight.dart';
 import 'package:nostra/setting/manageProfile/settingManage.dart';
 import 'package:nostra/setting/settingPage.dart';
 
@@ -16,6 +17,7 @@ import '../../home/cafeteria/cafeteriaMain.dart';
 import '../../home/employment/employmentMain.dart';
 import '../../home/activity/activityMain.dart';
 import '../../home/mainpage.dart';
+import '../../setting/lan/font/settingFont.dart';
 import '../../setting/lan/settingLan.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -139,16 +141,16 @@ final GoRouter router = GoRouter(
                     path: 'lan',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
                         _customTransitionPage(SettingLan()),
-                  ),
-                  GoRoute(
-                    path: 'font',
-                    pageBuilder: (BuildContext context, GoRouterState state) =>
-                        _customTransitionPage(SettingLan()),
                     routes: [
+                      GoRoute(
+                        path: '/font',
+                        pageBuilder: (BuildContext context, GoRouterState state) =>
+                            _customTransitionPage(SettingFont()),
+                      ),
                       GoRoute(
                         path: '/fontWeight',
                         pageBuilder: (BuildContext context, GoRouterState state) =>
-                            _customTransitionPage(Text("글자 굵기/크기")),
+                            _customTransitionPage(SettingFontWeight()),
                       ),
                     ]
                   ),

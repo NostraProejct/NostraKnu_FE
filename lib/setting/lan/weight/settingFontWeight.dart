@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SettingLan extends StatefulWidget {
-  const SettingLan({super.key});
+class SettingFontWeight extends StatefulWidget {
+  const SettingFontWeight({super.key});
 
 
   @override
-  State<StatefulWidget> createState() => _SettingLan();
+  State<StatefulWidget> createState() => _SettingFontWeight();
 }
 
-class _SettingLan extends State<SettingLan> {
-  String selectedLanguage = '대한민국';
+class _SettingFontWeight extends State<SettingFontWeight> {
+  String selectedFontSize = 'Inter';
+  String selectedFontWeight = '얇게';
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,8 @@ class _SettingLan extends State<SettingLan> {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  '글자/언어',
-                  style: TextStyle(fontSize: 20),
+                  '글자 크기/굵기',
+                  style: TextStyle(fontSize: 20,),
                 ),
               ),
             )
@@ -46,7 +47,7 @@ class _SettingLan extends State<SettingLan> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '언어',
+              '글자 크기',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20,),
@@ -54,15 +55,17 @@ class _SettingLan extends State<SettingLan> {
               padding: const EdgeInsets.all(5),
               child: Column(
                 children: [
-                  makeOptionsBox('대한민국'),
+                  makeOptionsBox('75%'),
                   const SizedBox(height: 20),
-                  makeOptionsBox('English'),
+                  makeOptionsBox('100%(권장)'),
+                  const SizedBox(height: 20),
+                  makeOptionsBox('125%'),
                 ],
               ),
             ),
             SizedBox(height: 30,),
             Text(
-              '글자',
+              '글자 굵기',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
             Padding(
@@ -74,7 +77,7 @@ class _SettingLan extends State<SettingLan> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        makeFontMenus('폰트', '/settings/lan/font'),
+                        makeOptionsBoxFontWeight('얇게'),
                       ],
                     ),
                   ),
@@ -84,7 +87,17 @@ class _SettingLan extends State<SettingLan> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        makeFontMenus('글자 크기/굵기', '/settings/lan/fontWeight'),
+                        makeOptionsBoxFontWeight('보통'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  SizedBox(
+                    width: screenWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        makeOptionsBoxFontWeight('두껍게'),
                       ],
                     ),
                   ),
@@ -101,7 +114,7 @@ class _SettingLan extends State<SettingLan> {
     return InkWell(
       onTap: () {
         setState(() {
-          selectedLanguage = title;
+          selectedFontSize = title;
         });
       },
       splashColor: Colors.blue.withOpacity(0.3),
@@ -123,7 +136,7 @@ class _SettingLan extends State<SettingLan> {
                     ),
                   ),
                 ),
-                if (selectedLanguage == title)
+                if (selectedFontSize == title)
                   const Padding(
                     padding: EdgeInsets.only(right: 14),
                     child: Icon(Icons.check, color: Colors.black),
@@ -140,10 +153,12 @@ class _SettingLan extends State<SettingLan> {
     );
   }
 
-  Widget makeFontMenus(String title, String movePath)  {
+  Widget makeOptionsBoxFontWeight(String title) {
     return InkWell(
       onTap: () {
-        context.go(movePath);
+        setState(() {
+          selectedFontWeight = title;
+        });
       },
       splashColor: Colors.blue.withOpacity(0.3),
       highlightColor: Colors.blue.withOpacity(0.1),
@@ -156,27 +171,24 @@ class _SettingLan extends State<SettingLan> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 17,),
-                  onPressed: () {
-                    context.go(movePath);
-                  },
-                ),
+                if (selectedFontWeight == title)
+                  const Padding(
+                    padding: EdgeInsets.only(right: 14),
+                    child: Icon(Icons.check, color: Colors.black),
+                  )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 1,
-              child: Container(
-                color: Colors.grey,
-              ),
+              child: Divider(color: Colors.grey),
             )
           ],
         ),
