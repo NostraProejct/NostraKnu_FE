@@ -139,6 +139,23 @@ final GoRouter router = GoRouter(
                     path: 'lan',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
                         _customTransitionPage(SettingLan()),
+                  ),
+                  GoRoute(
+                    path: 'font',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingLan()),
+                    routes: [
+                      GoRoute(
+                        path: '/fontWeight',
+                        pageBuilder: (BuildContext context, GoRouterState state) =>
+                            _customTransitionPage(Text("글자 굵기/크기")),
+                      ),
+                    ]
+                  ),
+                  GoRoute(
+                    path: 'etc',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingLan()),
                   )
                 ],
               ),
