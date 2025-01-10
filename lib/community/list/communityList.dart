@@ -51,7 +51,7 @@ class _CommunityList extends State<CommunityList> {
               height: 30,
               child: OutlinedButton(
                 onPressed: () {
-                  context.go('/community/list/write');
+                  context.go('/community/write');
                 },
                 child: Text('글 작성하기', style: TextStyle(fontSize: 10),),
                 style: OutlinedButton.styleFrom(
@@ -72,6 +72,7 @@ class _CommunityList extends State<CommunityList> {
               builderDelegate: PagedChildBuilderDelegate<Data_pre>(
                   itemBuilder: (context, item, index) => GestureDetector(
                     onTap: () {
+                      context.go('/community/detailPost', extra: item);
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,9 +94,9 @@ class _CommunityList extends State<CommunityList> {
                                 ),
                               ),
                               Container(
-                                width: 40, // 고정된 너비 설정
+                                width: 40, 
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // 양쪽에 붙어있게 정렬
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Icon(Icons.favorite, size: 16, color: Colors.red),
                                     Text(

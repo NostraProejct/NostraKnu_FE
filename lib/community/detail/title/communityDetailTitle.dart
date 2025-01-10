@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CommunityWriteTitle extends StatelessWidget {
-  const CommunityWriteTitle({super.key});
+class CommunityDetailTitle extends StatelessWidget {
+  const CommunityDetailTitle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CommunityWriteTitle extends StatelessWidget {
             },
           ),
           const Text(
-            '글쓰기',
+            '글',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
