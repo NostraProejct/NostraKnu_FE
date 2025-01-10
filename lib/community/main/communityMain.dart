@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nostra/community/main/noticeBoardSection.dart';
+import 'package:nostra/community/main/title/communityTitle.dart';
 
 import 'data/boardTextData.dart';
 import 'data/data.dart';
@@ -44,6 +45,9 @@ class _CommunityMain extends State {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: CommunityTitle(),
+      ),
       backgroundColor: Colors.white,
       body: Column(
         children: [
