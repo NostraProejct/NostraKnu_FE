@@ -11,12 +11,6 @@ class CommunityListTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              context.pop();
-            },
-          ),
           const Text(
             '정보 게시판',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),

@@ -10,12 +10,6 @@ class CommunityWriteTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              context.go('/community/list');
-            },
-          ),
           const Text(
             '글쓰기',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
