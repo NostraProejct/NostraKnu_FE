@@ -56,10 +56,7 @@ class _ActivityTotalState extends State<ActivityTotal> {
             Container(
               width: 2,
               height: 70,
-              color: Colors.grey[300],
-              child: Padding(
-                padding: EdgeInsets.only(top: 5, bottom: 5),
-              ),
+              color: isSelected ? Colors.orange : Colors.grey[300],
             ),
           ],
         ),

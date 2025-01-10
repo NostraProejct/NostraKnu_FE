@@ -71,7 +71,7 @@ class _EmploymentMainState extends State<EmploymentMain> {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 40.0),
                 child: Text(
                   'Your',
                   style: TextStyle(
@@ -84,7 +84,7 @@ class _EmploymentMainState extends State<EmploymentMain> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.only(left: 50.0),
+                    padding: EdgeInsets.only(left: 30.0),
                     child: Text(
                       'Job',
                       style: TextStyle(
