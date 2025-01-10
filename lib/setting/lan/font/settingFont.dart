@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class SettingLan extends StatefulWidget {
-  const SettingLan({super.key});
+class SettingFont extends StatefulWidget {
+  const SettingFont({super.key});
 
 
   @override
-  State<StatefulWidget> createState() => _SettingLan();
+  State<StatefulWidget> createState() => _SettingFont();
 }
 
-class _SettingLan extends State<SettingLan> {
-  String selectedLanguage = '대한민국';
+class _SettingFont extends State<SettingFont> {
+  String selectedLanguage = 'Inter';
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _SettingLan extends State<SettingLan> {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  '글자/언어',
+                  '폰트',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -40,33 +40,11 @@ class _SettingLan extends State<SettingLan> {
         ),
       ),
       body: Container(
-        width: screenWidth,
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              '언어',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.all(5),
-              child: Column(
-                children: [
-                  makeOptionsBox('대한민국'),
-                  const SizedBox(height: 20),
-                  makeOptionsBox('English'),
-                ],
-              ),
-            ),
-            SizedBox(height: 30,),
-            Text(
-              '글자',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-            Padding(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(16),
               child: Column(
                 children: [
                   SizedBox(
@@ -74,7 +52,7 @@ class _SettingLan extends State<SettingLan> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        makeFontMenus('폰트', '/settings/lan/font'),
+                        makeOptionsBox('Inter'),
                       ],
                     ),
                   ),
@@ -84,7 +62,27 @@ class _SettingLan extends State<SettingLan> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        makeFontMenus('글자 크기/굵기', '/settings/lan/fontWeight'),
+                        makeOptionsBox('Inknut Antiqua'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  SizedBox(
+                    width: screenWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        makeOptionsBox('Itim'),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                  SizedBox(
+                    width: screenWidth,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        makeOptionsBox('Jockey One'),
                       ],
                     ),
                   ),
@@ -133,50 +131,6 @@ class _SettingLan extends State<SettingLan> {
             const SizedBox(
               height: 1,
               child: Divider(color: Colors.grey),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget makeFontMenus(String title, String movePath)  {
-    return InkWell(
-      onTap: () {
-        context.go(movePath);
-      },
-      splashColor: Colors.blue.withOpacity(0.3),
-      highlightColor: Colors.blue.withOpacity(0.1),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios, color: Colors.grey, size: 17,),
-                  onPressed: () {
-                    context.go(movePath);
-                  },
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 1,
-              child: Container(
-                color: Colors.grey,
-              ),
             )
           ],
         ),
