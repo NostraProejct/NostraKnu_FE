@@ -25,7 +25,7 @@ class _SettingManage extends State<SettingManage> {
                 alignment: Alignment.center,
                 child: Text(
                   '커뮤니티',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20,),
                 ),
               ),
             )
