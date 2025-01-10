@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nostra/community/write/title/CommunityWriteTitle.dart';
 
 class CommunityWrite extends StatefulWidget {
   const CommunityWrite({super.key});
@@ -34,6 +36,16 @@ class _CommunityWrite extends State<CommunityWrite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: CommunityWriteTitle(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            context.go('/community/list');
+          },
+        ),
+        backgroundColor: Color(0xFFFAF5F2)
+      ),
       backgroundColor: Color(0xFFFAF5F2),
       body: Container(
         child: Column(
@@ -183,7 +195,7 @@ class _CommunityWrite extends State<CommunityWrite> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: AssetImage('assets/images/camera.png'),
+                        image: AssetImage('assets/images/Camera.png'),
                         fit: BoxFit.cover,
                       ),
                     ),

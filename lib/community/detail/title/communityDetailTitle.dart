@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class CommunityDetailTitle extends StatelessWidget {
   const CommunityDetailTitle({super.key});
@@ -10,12 +9,6 @@ class CommunityDetailTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              context.go('/community/list');
-            },
-          ),
           const Text(
             '글',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),

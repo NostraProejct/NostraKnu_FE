@@ -45,7 +45,7 @@ class _CommunityChatList extends State<CommunityChatList> {
           borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.white.withOpacity(0.4),
             spreadRadius: 1,
             blurRadius: 2,
             offset: Offset(0, 2),
