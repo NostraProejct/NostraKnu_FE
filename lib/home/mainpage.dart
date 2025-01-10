@@ -6,8 +6,6 @@ import 'package:nostra/home/title/home_title.dart';
 
 import '../community/list/communityList.dart';
 import '../community/main/title/communityTitle.dart';
-import '../setting/settingPage.dart';
-import '../setting/title/setting_title.dart';
 import 'home_screen.dart';
 
 class MainPage extends StatefulWidget {
