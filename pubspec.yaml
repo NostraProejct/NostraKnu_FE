@@ -74,7 +74,6 @@ flutter:
     - assets/images/Group.png
     - assets/images/Lan.png
     - assets/images/Manage.png
-    - assets/images/Notification.png
     - assets/images/Privacy.png
 
   fonts:

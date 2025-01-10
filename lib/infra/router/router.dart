@@ -16,6 +16,7 @@ import '../../home/cafeteria/cafeteriaMain.dart';
 import '../../home/employment/employmentMain.dart';
 import '../../home/activity/activityMain.dart';
 import '../../home/mainpage.dart';
+import '../../setting/lan/settingLan.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> mapNavigatorKey = GlobalKey<NavigatorState>();
@@ -133,6 +134,11 @@ final GoRouter router = GoRouter(
                     path: 'manage',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
                         _customTransitionPage(SettingManage()),
+                  ),
+                  GoRoute(
+                    path: 'lan',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingLan()),
                   )
                 ],
               ),
