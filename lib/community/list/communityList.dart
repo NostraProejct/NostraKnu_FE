@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:nostra/community/list/title/communityListTitle.dart';
 
 import 'data/testData.dart';
 
@@ -39,88 +40,100 @@ class _CommunityList extends State<CommunityList> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 13.0),
-            child: SizedBox(
-              width: 85,
-              height: 30,
-              child: OutlinedButton(
-                onPressed: () {
-                  context.go('/community/write');
-                },
-                child: Text('글 작성하기', style: TextStyle(fontSize: 10),),
-                style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: Color(0xFFE8E8E8),
-                    side: BorderSide.none,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16)
-                ),
-              ),
-            )
-          ),
-          Expanded(
-            child: PagedListView<int, Data_pre>(
-              pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<Data_pre>(
-                  itemBuilder: (context, item, index) => GestureDetector(
-                    onTap: () {
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(bottom: 0, left: 8, right: 8, top: 11),
-                          margin: EdgeInsets.symmetric(horizontal: 13),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(item.content, style: TextStyle(fontWeight: FontWeight.bold),),
-                                    Text(item.author),
-                                    Text(item.time, style: TextStyle(color: Colors.grey, fontSize: 10),)
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: 40, // 고정된 너비 설정
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // 양쪽에 붙어있게 정렬
-                                  children: [
-                                    Icon(Icons.favorite, size: 16, color: Colors.red),
-                                    Text(
-                                      item.likes.toString(),
-                                      style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: CommunityListTitle(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            context.pop();
+          },
+        ),
+      ),
+      body: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 13.0),
+                  child: SizedBox(
+                    width: 85,
+                    height: 30,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        context.go('/community/list/write');
+                      },
+                      child: Text('글 작성하기', style: TextStyle(fontSize: 10),),
+                      style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          backgroundColor: Color(0xFFE8E8E8),
+                          side: BorderSide.none,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.symmetric(horizontal: 21),
-                          child: Divider(thickness: 1, color: Colors.grey[203]),
-                        ),
-                      ],
+                          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16)
+                      ),
+                    ),
+                  )
+              ),
+              Expanded(
+                child: PagedListView<int, Data_pre>(
+                  pagingController: _pagingController,
+                  builderDelegate: PagedChildBuilderDelegate<Data_pre>(
+                    itemBuilder: (context, item, index) => GestureDetector(
+                      onTap: () {
+                        context.go('/community/detailPost', extra: item);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(bottom: 0, left: 8, right: 8, top: 11),
+                            margin: EdgeInsets.symmetric(horizontal: 13),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(item.content, style: TextStyle(fontWeight: FontWeight.bold),),
+                                      Text(item.author),
+                                      Text(item.time, style: TextStyle(color: Colors.grey, fontSize: 10),)
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: 40,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Icon(Icons.favorite, size: 16, color: Colors.red),
+                                      Text(
+                                        item.likes.toString(),
+                                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.symmetric(horizontal: 21),
+                            child: Divider(thickness: 1, color: Colors.grey[203]),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-              ),
-            ),
+                ),
+              )
+            ],
           )
-        ],
-      )
+      ),
     );
   }
 

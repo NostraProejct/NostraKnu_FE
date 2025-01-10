@@ -23,7 +23,6 @@ class _SettingPage extends State<SettingPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
-                  // 프로필 이미지와 버튼을 Column으로 묶음
                   Column(
                     children: [
                       CircleAvatar(
@@ -60,7 +59,7 @@ class _SettingPage extends State<SettingPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10.0), // 이미지와 버튼 간 간격
+              const SizedBox(height: 10.0),
               // 프로필 수정 버튼
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -86,21 +85,6 @@ class _SettingPage extends State<SettingPage> {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Container(
-          width: double.infinity,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text("계정"),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(Icons.arrow_forward_ios)
                 ],
               ),
             ],

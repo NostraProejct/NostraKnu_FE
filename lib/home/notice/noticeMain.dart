@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NoticeMain extends StatefulWidget {
   @override
@@ -8,46 +9,69 @@ class NoticeMain extends StatefulWidget {
 }
 
 class _NoticeMain extends State<NoticeMain> {
+  int currentPageGroupIndex = 1;
   int currentPage = 1;
   final int itemsPerPage = 5;
-  final int totalPages = 10;
 
-  final List<Map<String, String>> notices = List.generate(
-    50, (index) => {
+  final List<Map<String, String>> notices = List.generate(63, (index) => {
       "id": "${1045 - index}",
       "title": "공지사항 ${index + 1} 제목",
       "date": "24.10.${(index % 30 + 1).toString().padLeft(2, '0')}"
     },
   );
 
-  List<Map<String, String>> getCurrentPageNotices() {
+  // 데이터 기반으로 총 페이지 계산
+  int get totalPages => (notices.length / itemsPerPage).ceil();
+
+  // 현재 페이지 그룹에 해당하는 페이지 목록 반환
+  List<int> getPageNumbersForCurrentGroup() {
+    int startPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
+    int endPage = startPage + itemsPerPage - 1;
+    if (endPage > totalPages) endPage = totalPages;
+    return List.generate(endPage - startPage + 1, (index) => startPage + index);
+  }
+
+  // 현재 페이지에 해당하는 공지사항 가져오기
+  List<Map<String, String>> getNoticesForCurrentPage() {
     int startIndex = (currentPage - 1) * itemsPerPage;
     int endIndex = startIndex + itemsPerPage;
-    return notices.sublist(
-        startIndex, endIndex > notices.length ? notices.length : endIndex);
+
+    // 데이터가 없는 페이지 빈 리스트 반환
+    if (startIndex >= notices.length) {
+      return [];
+    }
+    return notices.sublist(startIndex, endIndex > notices.length ? notices.length : endIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    final currentNotices = getCurrentPageNotices();
+    final currentPageNumbers = getPageNumbersForCurrentGroup();
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text(
-          "공지사항",
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 1,
+        backgroundColor: Colors.grey[200],
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          iconSize: 26,
+          onPressed: () => context.pop(),
         ),
+        title: Text(
+          '공지사항',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black),
+            iconSize: 26,
             onPressed: () {
-              // 검색 기능 추가
+              // 검색 기능
             },
           ),
         ],
@@ -56,66 +80,75 @@ class _NoticeMain extends State<NoticeMain> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: currentNotices.length,
+              itemCount: getNoticesForCurrentPage().length,
               itemBuilder: (context, index) {
-                final notice = currentNotices[index];
-                return GestureDetector(
-                  onTap: () {
-                    // 공지사항 상세 페이지로 이동
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => NoticeDetailScreen(
-                          id: notice["id"]!,
-                          title: notice["title"]!,
-                          date: notice["date"]!,
+                final notice = getNoticesForCurrentPage()[index];
+                // 공지사항 글 박스
+                return Container(
+                  margin: EdgeInsets.symmetric(vertical: 9.0, horizontal: 16.0),
+                  child: Material(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    elevation: 1.0, // 약간의 그림자 효과
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(10.0),
+                      highlightColor: Colors.blue.withOpacity(0.2), // 클릭 시 강조 색상
+                      splashColor: Colors.blue.withOpacity(0.1), // 잔물결 효과 색상
+                      onTap: () {
+                        context.push('/notice/${notice["id"]}', extra: {
+                          "id": notice["id"]!,
+                          "title": notice["title"]!,
+                          "date": notice["date"]!,
+                        });
+                      },
+                      onHighlightChanged: (isHighlighted) {
+                        // 클릭 시 추가적인 테두리 효과
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInOut,
+                        padding: EdgeInsets.all(12.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                            color: Colors.grey.withOpacity(0.5),
+                            width: 0.8,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              notice["id"]!,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Container(
+                              height: 44,
+                              child: Text(
+                                notice["title"]!,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              notice["date"]!,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
-                    padding: EdgeInsets.all(12.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          notice["id"]!,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey[600],
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          notice["title"]!,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          notice["date"]!,
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 );
@@ -124,60 +157,56 @@ class _NoticeMain extends State<NoticeMain> {
           ),
           // 페이지네이션 바
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            padding: const EdgeInsets.only(top: 10.0, bottom: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
                   icon: Icon(Icons.arrow_back_ios, size: 16),
                   onPressed: () {
-                    if (currentPage > 1) {
+                    if (currentPageGroupIndex > 1) {
                       setState(() {
-                        currentPage--;
+                        currentPageGroupIndex--;
+                        currentPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
                       });
                     }
                   },
                 ),
-                ...List.generate(5, (index) {
-                  int page = currentPage - 2 + index;
-                  if (page < 1 || page > totalPages) return SizedBox();
+                ...currentPageNumbers.map((page) {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        currentPage = page;
+                        currentPage = page; // 선택된 페이지 변경
                       });
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 4.0),
-                      padding:
-                      EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
                       decoration: BoxDecoration(
-                        color:
-                        page == currentPage ? Colors.blue : Colors.white,
+                        color: page == currentPage ? Colors.blue : Colors.white,
                         borderRadius: BorderRadius.circular(4.0),
                         border: Border.all(
-                          color:
-                          page == currentPage ? Colors.blue : Colors.grey,
+                          color: page == currentPage ? Colors.blue : Colors.grey,
                         ),
                       ),
                       child: Text(
                         "$page",
                         style: TextStyle(
                           fontSize: 14,
-                          color: page == currentPage
-                              ? Colors.white
-                              : Colors.black,
+                          color:
+                          page == currentPage ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
                   );
-                }),
+                }).toList(),
                 IconButton(
                   icon: Icon(Icons.arrow_forward_ios, size: 16),
                   onPressed: () {
-                    if (currentPage < totalPages) {
+                    if ((currentPageGroupIndex) * itemsPerPage < totalPages) {
                       setState(() {
-                        currentPage++;
+                        currentPageGroupIndex++;
+                        currentPage = (currentPageGroupIndex - 1) * itemsPerPage + 1;
                       });
                     }
                   },
@@ -186,59 +215,6 @@ class _NoticeMain extends State<NoticeMain> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-// 공지사항 상세 화면
-class NoticeDetailScreen extends StatelessWidget {
-  final String id;
-  final String title;
-  final String date;
-
-  NoticeDetailScreen({required this.id, required this.title, required this.date});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("공지사항 글", style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
-        elevation: 1,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              id,
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-            ),
-            SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8),
-            Text(
-              date,
-              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-            ),
-            SizedBox(height: 16),
-            Expanded(
-              child: Text(
-                "공지사항 내용. 데이터베이스에서 가져올 예정",
-                style: TextStyle(fontSize: 16, color: Colors.black),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
