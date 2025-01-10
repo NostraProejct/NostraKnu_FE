@@ -135,11 +135,11 @@ class _SettingPage extends State<SettingPage> {
                       height: 10,
                     ),
                     Text('정보', style: TextStyle(color: Colors.grey),),
-                    makeOptionsBoxWithPic('asset/images/Lan.png', "공지사항"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "공지사항"),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Notification.png', "앱 관리"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "앱 관리"),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Option.png', "개인정보처리방침"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "개인정보처리방침"),
                   ],
                 )
               ],
@@ -244,7 +244,7 @@ class _SettingPage extends State<SettingPage> {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/images/Notification.png', width: 30,),
+                      'assets/images/Favorites.png', width: 30,),
                     SizedBox(
                       width: 10,
                     ),
