@@ -66,7 +66,63 @@ class _SettingPage extends State<SettingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true, //바깥 영역 터치시 닫을지 여부 결정
+                        builder: ((context) {
+                          return AlertDialog(
+                            contentPadding: EdgeInsets.zero, // 내부 여백을 0으로 설정
+                            insetPadding: EdgeInsets.zero,
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                SizedBox(height: 45,),
+                                Text("정말로", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                                Text("회원을 탈퇴하시겠어요?", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                                SizedBox(height: 45,)
+                              ],
+                            ),
+
+                            actions: <Widget>[
+                              Column(
+                                children: [
+                                  Divider(
+                                    color: Color(0xffcccccc), // 색상
+                                    thickness: 2, // 두께
+                                    height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                  ),
+                                  Container(
+                                    child: TextButton(
+                                      style: TextButton.styleFrom(
+                                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16), // 내부 여백 조정
+                                      ),
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); //창 닫기
+                                      },
+                                      child: Text("회원탈퇴", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800),),
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Color(0xffcccccc), // 색상
+                                    thickness: 2, // 두께
+                                    height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                  ),
+                                  Container(
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); //창 닫기
+                                      },
+                                      child: Text("취소", style: TextStyle(color: Colors.black),),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          );
+                        }),
+                      );
+                    },
                     child: const Text(
                       "프로필 관리",
                       style: TextStyle(
@@ -79,7 +135,7 @@ class _SettingPage extends State<SettingPage> {
                   OutlinedButton(
                     onPressed: () {},
                     child: const Text(
-                      "프로필 공유",
+                      "프로필 공유",:
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
