@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nostra/community/write/title/CommunityWriteTitle.dart';
 
 class CommunityWrite extends StatefulWidget {
   const CommunityWrite({super.key});
@@ -34,6 +36,16 @@ class _CommunityWrite extends State<CommunityWrite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: CommunityWriteTitle(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            context.go('/community/list');
+          },
+        ),
+        backgroundColor: Color(0xFFFAF5F2)
+      ),
       backgroundColor: Color(0xFFFAF5F2),
       body: Container(
         child: Column(
@@ -175,15 +187,15 @@ class _CommunityWrite extends State<CommunityWrite> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                     width: 100,
                     height: 100,
-                    margin: EdgeInsets.only(left: 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: AssetImage('assets/images/camera.png'),
+                        image: AssetImage('assets/images/Camera.png'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -191,7 +203,6 @@ class _CommunityWrite extends State<CommunityWrite> {
                   Container(
                     width: 100,
                     height: 100,
-                    margin: EdgeInsets.only(left: 20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -200,53 +211,14 @@ class _CommunityWrite extends State<CommunityWrite> {
                       ),
                     ),
                   ),
-                  // 사진 추가할 수 있는 Container
-                  GestureDetector(
-                    onTap: () {
-                      // 이미지 선택 기능을 호출
-                      _pickImage(ImageSource.gallery); // 갤러리에서 이미지 선택
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 17),
-                      width: 370,
-                      height: 172,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        children: [
-                          // 기본 카메라 아이콘을 표시하는 부분
-                          _imageFiles.isEmpty
-                              ? Container(
-                            width: 100,
-                            height: 100,
-                            margin: EdgeInsets.only(left: 20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: Colors.grey,
-                                width: 2,
-                              ),
-                            ),
-                          )
-                              : Container(),
-                          // 선택된 이미지가 있으면 표시
-                          ..._imageFiles.map((file) {
-                            return Container(
-                              margin: EdgeInsets.only(left: 20),
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  image: FileImage(file),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ],
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 2,
                       ),
                     ),
                   ),
