@@ -8,14 +8,14 @@ class SettingTitleWidget extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child:
-        Text(
-            '메뉴',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-              fontWeight:FontWeight.bold,
-            ),
+      Text(
+        '메뉴',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 15,
+          fontWeight:FontWeight.bold,
         ),
+      ),
     );
   }
 }
