@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'activityTabView/acitivity_total.dart';
-import 'activityTabView/activity_club.dart';
-import 'activityTabView/activity_competition.dart';
-import 'activityTabView/activity_volunteer.dart';
-import 'activityTabView/activity_study.dart';
+import 'activityTabView/acitivityTotal.dart';
+import 'activityTabView/activityClub.dart';
+import 'activityTabView/activityCompetition.dart';
+import 'activityTabView/activityVolunteer.dart';
+import 'activityTabView/activityStudy.dart';
 
 class ActivityMain extends StatefulWidget {
   const ActivityMain({super.key});
