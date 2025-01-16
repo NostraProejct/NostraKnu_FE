@@ -4,6 +4,7 @@ import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
 import 'package:nostra/setting/manageProfile/settingManage.dart';
+import 'package:nostra/setting/notice/settingNotice.dart';
 import 'package:nostra/setting/settingPage.dart';
 
 import '../../community/list/communityList.dart';
@@ -133,7 +134,12 @@ final GoRouter router = GoRouter(
                     path: 'manage',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
                         _customTransitionPage(SettingManage()),
-                  )
+                  ),
+                  GoRoute(
+                    path: 'notice',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingNotice()),
+                  ),
                 ],
               ),
             ]
