@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // 프로필 사진 클릭 시 동작
           },
           child: CircleAvatar(
-            backgroundImage: AssetImage('assets/profile.jpg'), // 프로필 이미지
+            backgroundImage: AssetImage('assets/images/Profile_image.jpg'),
             radius: 15,
           ),
         ),
@@ -87,16 +87,17 @@ class _HomeScreenState extends State<HomeScreen> {
         // 학식, 대외활동, 취업 섹션
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(left: 16.0, top: 20.0, right: 16.0),
+            padding: const EdgeInsets.only(left: 16.0, top: 25.0, right: 16.0),
             child: Column(
               children: [
                 // 학식과 대외활동
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CafetriaSection(onTap: () {
-                      context.go('/cafeteria'); // 학식 페이지로 이동
-                    },
+                    CafetriaSection(
+                      onTap: () {
+                        context.go('/cafeteria'); // 학식 페이지로 이동
+                      },
                     ),
                     ActivitySection(
                       onTap: () {
@@ -105,10 +106,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 25),
                 // 취업
                 EmploymentSection(
-                  isFullWidth: true,
                   onTap: () {
                     context.go('/employment'); // 취업 페이지로 이동
                   },

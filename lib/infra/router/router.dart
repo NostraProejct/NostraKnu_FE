@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:nostra/home/mainpage.dart';
+import 'package:nostra/home/home_screen.dart';
+import 'package:nostra/home/notice/noticeMain.dart';
+import 'package:nostra/home/notice/noticeDetail.dart';
+import 'package:nostra/home/cafeteria/cafeteriaMain.dart';
+import 'package:nostra/home/activity/activityMain.dart';
+import 'package:nostra/home/employment/employmentMain.dart';
+
+import 'package:nostra/community/main/communityMain.dart';
+import 'package:nostra/community/list/communityList.dart';
+import 'package:nostra/community/detail/communityDetail.dart';
 import 'package:nostra/community/write/communityWrite.dart';
 
-import '../../community/list/communityList.dart';
-import '../../community/main/communityMain.dart';
-
-import '../../home/home_screen.dart';
-import '../../home/notice/noticeMain.dart';
-import '../../home/notice/noticeDetail.dart';
-import '../../home/cafeteria/cafeteriaMain.dart';
-import '../../home/employment/employmentMain.dart';
-import '../../home/activity/activityMain.dart';
-import '../../home/mainpage.dart';
+import 'package:nostra/setting/settingPage.dart';
+import 'package:nostra/setting/manageProfile/settingManage.dart ';
+import 'package:nostra/setting/notice/settingNotice.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> mapNavigatorKey = GlobalKey<NavigatorState>();
@@ -108,6 +112,11 @@ final GoRouter router = GoRouter(
                       ),
                     ]
                 ),
+                GoRoute(
+                  path: 'detailPost',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(CommunityDetail()),
+                ),
               ],
             ),
           ]
@@ -119,7 +128,19 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/settings',
               pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(Text("설정 화면 준비 중")),
+                  _customTransitionPage(SettingPage()),
+              routes: [
+                GoRoute(
+                  path: 'manage',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(SettingManage()),
+                ),
+                GoRoute(
+                  path: 'notice',
+                  pageBuilder: (BuildContext context, GoRouterState state) =>
+                      _customTransitionPage(SettingNotice()),
+                ),
+              ],
             ),
           ]
         ),
