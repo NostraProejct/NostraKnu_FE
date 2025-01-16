@@ -39,6 +39,7 @@ class _ActivityTotalState extends State<ActivityTotal> {
             trackColor: Colors.grey.shade200, // 트랙 색상
             child: SingleChildScrollView(
               child: Column(
+                //
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 20), // 오른쪽 여백 추가
