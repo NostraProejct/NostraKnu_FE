@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'acitivity_total.dart';
-import 'activity_club.dart';
-import 'activity_competition.dart';
-import 'activity_volunteer.dart';
-import 'activity_study.dart';
+import 'activityTabView/acitivityTotal.dart';
+import 'activityTabView/activityClub.dart';
+import 'activityTabView/activityCompetition.dart';
+import 'activityTabView/activityVolunteer.dart';
+import 'activityTabView/activityStudy.dart';
 
 class ActivityMain extends StatefulWidget {
   const ActivityMain({super.key});
-
+//test
   @override
   State<ActivityMain> createState() => _ActivityMainState();
 }
