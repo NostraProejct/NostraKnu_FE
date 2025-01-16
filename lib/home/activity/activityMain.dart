@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'acitivity_total.dart';
-import 'activity_club.dart';
-import 'activity_competition.dart';
-import 'activity_volunteer.dart';
-import 'activity_study.dart';
+
+import 'package:nostra/home/activity/activityTabView/acitivityTotal.dart';
+import 'package:nostra/home/activity/activityTabView/activityClub.dart';
+import 'package:nostra/home/activity/activityTabView/activityCompetition.dart';
+import 'package:nostra/home/activity/activityTabView/activityVolunteer.dart';
+import 'package:nostra/home/activity/activityTabView/activityStudy.dart';
 
 class ActivityMain extends StatefulWidget {
   const ActivityMain({super.key});

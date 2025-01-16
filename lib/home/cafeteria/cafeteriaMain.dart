@@ -12,7 +12,7 @@ class _CafeteriaMain extends State<CafeteriaMain> {
 
   final List<String> locations = ['새롬관', '이룸관', '동준관', '영호관', '현권관'];
   final List<List<String>> menus = [
-    ['밥 제육볶음\n계란말이\n된장국', '밥 닭볶음탕', '밥 불고기', '밥 불고기', '밥 불고기'],
+    ['밥 된장국\n제육볶음\n계란말이', '계란볶음밥 미소된장국\n닭볶음탕\n멸치볶음', '밥 불고기', '밥 불고기', '밥 불고기'],
     ['밥 갈비탕', '밥 오징어볶음', '밥 김치찌개', '밥 불고기', '밥 불고기'],
     ['밥 돈까스', '밥 순두부찌개', '밥 비빔밥', '밥 불고기', '밥 불고기'],
     ['밥 삼계탕', '밥 떡볶이', '밥 생선구이', '밥 불고기', '밥 불고기'],
@@ -195,7 +195,7 @@ class _CafeteriaMain extends State<CafeteriaMain> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 locations.length,
-                    (index) => Container(
+                (index) => Container(
                   margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
                   width: 8,
                   height: 8,

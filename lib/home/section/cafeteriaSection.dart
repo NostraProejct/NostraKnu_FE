@@ -14,6 +14,7 @@ class CafetriaSection extends StatelessWidget {
         children: [
           Row(
             children: const [
+              SizedBox(width: 2),
               Icon(Icons.list, color: Colors.black),
               SizedBox(width: 4),
               Text(
@@ -29,52 +30,73 @@ class CafetriaSection extends StatelessWidget {
           SizedBox(height: 5),
           Container(
             width: (MediaQuery.of(context).size.width - 50) / 2,
-            height: 150,
+            height: 160,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: Offset(0, 2),
+                ),
+              ],
             ),
-            child: Padding(
-              padding: EdgeInsets.all(14.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.brown[50],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      topRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'MON',
+                        '새롬관',
                         style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown[600],
                         ),
                       ),
-                      SizedBox(width: 12),
                       Text(
-                        '10.7',
+                        '점심',
                         style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
+                          fontSize: 14,
+                          color: Colors.brown[700],
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 5),
-                  Text(
-                    '밥 제육볶음\n계란말이\n된장국',
-                    style: TextStyle(
-                      color: Colors.black,
-                      height: 1.65,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '밥\n된장국\n제육볶음\n계란말이',
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                            height: 1.6,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );

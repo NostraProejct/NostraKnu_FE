@@ -209,7 +209,7 @@ class _SettingPage extends State<SettingPage> {
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed: () {
-
+                    context.go('/settings/notice');
                   },
                 ),
               ],
@@ -229,7 +229,7 @@ class _SettingPage extends State<SettingPage> {
   Widget makeOptionsBoxWithPic(String imgPath, String title)  {
     return InkWell(
       onTap: () {
-
+        context.go('/settings/notice');
       },
       splashColor: Colors.blue.withOpacity(0.3),
       highlightColor: Colors.blue.withOpacity(0.1),
@@ -260,7 +260,7 @@ class _SettingPage extends State<SettingPage> {
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed: () {
-
+                    context.go('/settings/notice');
                   },
                 ),
               ],
