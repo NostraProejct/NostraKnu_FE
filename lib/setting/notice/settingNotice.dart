@@ -65,7 +65,7 @@ class _SettingNotice extends State<SettingNotice>{
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        makeToglesBox('위치 정보 서비스 이용약관 동의')
+                        makeToglesBox('위치 정보 서비스 이용 약관 동의')
                       ],
                     ),
                   )
