@@ -113,9 +113,9 @@ final GoRouter router = GoRouter(
                       ]
                   ),
                   GoRoute(
-                      path: 'detailPost',
-                      pageBuilder: (BuildContext context, GoRouterState state) =>
-                          _customTransitionPage(CommunityDetail()),
+                    path: 'detailPost',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(CommunityDetail()),
                   ),
                 ],
               ),
