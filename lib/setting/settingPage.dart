@@ -119,11 +119,11 @@ class _SettingPage extends State<SettingPage> {
                       height: 10,
                     ),
                     Text('일반', style: TextStyle(color: Colors.grey),),
-                    makeOptionsBoxWithPic('asset/images/Lan.png', "글자/언어"),
+                    makeOptionsBoxWithPic('asset/images/Lan.png', "글자/언어", '/settings/lan'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Notification.png', "알림/권한"),
+                    makeOptionsBoxWithPic('asset/images/Notification.png', "알림/권한", '/settings/notifications'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Option.png', "기타"),
+                    makeOptionsBoxWithPic('asset/images/Option.png', "기타", '/settings/etc'),
                   ],
                 ),
 
@@ -135,11 +135,11 @@ class _SettingPage extends State<SettingPage> {
                       height: 10,
                     ),
                     Text('정보', style: TextStyle(color: Colors.grey),),
-                    makeOptionsBoxWithPic('asset/images/Lan.png', "공지사항"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "공지사항", '/settings/bulletBoard'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Notification.png', "앱 관리"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "앱 관리", '/settings/manage'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Option.png', "개인정보처리방침"),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "개인정보처리방침", 'settings/privacy'),
                   ],
                 )
               ],
@@ -151,10 +151,10 @@ class _SettingPage extends State<SettingPage> {
                 width: 200,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)
-                      )
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15)
+                    )
                   ),
                   onPressed: () {
 
@@ -170,7 +170,7 @@ class _SettingPage extends State<SettingPage> {
                       fontSize: 10,
                       color: Colors.grey,
                       decoration: TextDecoration.underline,
-                      decorationColor: Colors.grey
+                    decorationColor: Colors.grey
                   ),),
               ),
               SizedBox(height: 10,)
@@ -226,10 +226,10 @@ class _SettingPage extends State<SettingPage> {
     );
   }
 
-  Widget makeOptionsBoxWithPic(String imgPath, String title)  {
+  Widget makeOptionsBoxWithPic(String imgPath, String title, String movePath)  {
     return InkWell(
       onTap: () {
-
+        context.go(movePath);
       },
       splashColor: Colors.blue.withOpacity(0.3),
       highlightColor: Colors.blue.withOpacity(0.1),
@@ -244,7 +244,7 @@ class _SettingPage extends State<SettingPage> {
                 Row(
                   children: [
                     Image.asset(
-                      'assets/images/Notification.png', width: 30,),
+                      'assets/images/Favorites.png', width: 30,),
                     SizedBox(
                       width: 10,
                     ),
@@ -260,7 +260,7 @@ class _SettingPage extends State<SettingPage> {
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed: () {
-
+                    context.go(movePath);
                   },
                 ),
               ],
