@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
-import 'package:nostra/setting/lan/weight/settingFontWeight.dart';
 import 'package:nostra/setting/manageProfile/settingManage.dart';
+import 'package:nostra/setting/notice/settingNotice.dart';
 import 'package:nostra/setting/settingPage.dart';
 
 import '../../community/list/communityList.dart';
@@ -17,8 +17,6 @@ import '../../home/cafeteria/cafeteriaMain.dart';
 import '../../home/employment/employmentMain.dart';
 import '../../home/activity/activityMain.dart';
 import '../../home/mainpage.dart';
-import '../../setting/lan/font/settingFont.dart';
-import '../../setting/lan/settingLan.dart';
 
 final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> mapNavigatorKey = GlobalKey<NavigatorState>();
@@ -115,9 +113,9 @@ final GoRouter router = GoRouter(
                       ]
                   ),
                   GoRoute(
-                      path: 'detailPost',
-                      pageBuilder: (BuildContext context, GoRouterState state) =>
-                          _customTransitionPage(CommunityDetail()),
+                    path: 'detailPost',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(CommunityDetail()),
                   ),
                 ],
               ),
@@ -138,27 +136,10 @@ final GoRouter router = GoRouter(
                         _customTransitionPage(SettingManage()),
                   ),
                   GoRoute(
-                    path: 'lan',
+                    path: 'notice',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
-                        _customTransitionPage(SettingLan()),
-                    routes: [
-                      GoRoute(
-                        path: '/font',
-                        pageBuilder: (BuildContext context, GoRouterState state) =>
-                            _customTransitionPage(SettingFont()),
-                      ),
-                      GoRoute(
-                        path: '/fontWeight',
-                        pageBuilder: (BuildContext context, GoRouterState state) =>
-                            _customTransitionPage(SettingFontWeight()),
-                      ),
-                    ]
+                        _customTransitionPage(SettingNotice()),
                   ),
-                  GoRoute(
-                    path: 'etc',
-                    pageBuilder: (BuildContext context, GoRouterState state) =>
-                        _customTransitionPage(SettingLan()),
-                  )
                 ],
               ),
             ]

@@ -16,141 +16,141 @@ class _SettingManage extends State<SettingManage> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        title:  Stack(
-          children: const [
-            Padding(
-              padding: EdgeInsets.only(right: 50),
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  '커뮤니티',
-                  style: TextStyle(fontSize: 20,),
+        appBar: AppBar(
+          title:  Stack(
+            children: const [
+              Padding(
+                padding: EdgeInsets.only(right: 50),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    '커뮤니티',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              )
+            ],
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              context.pop();
+            },
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                  width: screenWidth,
+                  height: 220,
+                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF8F8F8),
+                  ),
+                  child: Stack(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage('assets/images/Profile_image.jpg'),
+                              radius: 70.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: IconButton(
+                          icon: Icon(Icons.settings),
+                          onPressed: () {
+                          },
+                        ),
+                      )
+                    ],
+                  )
+              ),
+              Container(
+                width: screenWidth,
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '내정보',
+                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 20,),
+                    Container(
+                      width: screenWidth,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('닉네임', style: TextStyle(fontSize: 11),),
+                          makeOptionsBox('Lamu_01'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Container(
+                      width: screenWidth,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('이메일', style: TextStyle(fontSize: 11),),
+                          makeOptionsBox('manuna530@gmail.com'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Container(
+                      width: screenWidth,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('휴대폰 번호', style: TextStyle(fontSize: 11,),),
+                          makeOptionsBox('010-2998-7438'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Container(
+                      width: screenWidth,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('소개', style: TextStyle(fontSize: 11),),
+                          makeOptionsBox('나를 소개해주세요'),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            )
-          ],
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            context.pop();
-          },
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              width: screenWidth,
-              height: 220,
-              margin: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              decoration: BoxDecoration(
-                color: Color(0xFFF8F8F8),
-              ),
-              child: Stack(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/Profile_image.jpg'),
-                          radius: 70.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: IconButton(
-                      icon: Icon(Icons.settings),
-                      onPressed: () {
-                      },
+              Container(
+                width: screenWidth,
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '공개 범위',
+                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                     ),
-                  )
-                ],
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: CustomStepper(),
+                    )
+                  ],
+                ),
               )
-            ),
-            Container(
-              width: screenWidth,
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '내정보',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    width: screenWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('닉네임', style: TextStyle(fontSize: 11),),
-                        makeOptionsBox('Lamu_01'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    width: screenWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('이메일', style: TextStyle(fontSize: 11),),
-                        makeOptionsBox('manuna530@gmail.com'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    width: screenWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('휴대폰 번호', style: TextStyle(fontSize: 11,),),
-                        makeOptionsBox('010-2998-7438'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Container(
-                    width: screenWidth,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('소개', style: TextStyle(fontSize: 11),),
-                        makeOptionsBox('나를 소개해주세요'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: screenWidth,
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '공개 범위',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    child: CustomStepper(),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      )
+            ],
+          ),
+        )
     );
   }
 

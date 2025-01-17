@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'activityTabView/acitivityTotal.dart';
+import 'activityTabView/activityClub.dart';
+import 'activityTabView/activityCompetition.dart';
+import 'activityTabView/activityVolunteer.dart';
+import 'activityTabView/activityStudy.dart';
 
 class ActivityMain extends StatefulWidget {
   const ActivityMain({super.key});
-
+//test
   @override
   State<ActivityMain> createState() => _ActivityMainState();
 }
@@ -82,14 +87,13 @@ class _ActivityMainState extends State<ActivityMain>
   Widget _body() {
     return TabBarView(
       controller: _tabController,
-      children: tabTitles.map((title) {
-        return Center(
-          child: Text(
-            '$title 콘텐츠',
-            style: const TextStyle(fontSize: 20), // 콘텐츠 텍스트 스타일
-          ),
-        );
-      }).toList(),
+      children: const [
+        ActivityTotal(),
+        ActivityClub(),
+        ActivityCompetition(),
+        ActivityVolunteer(),
+        ActivityStudy(),
+      ],
     );
   }
 }
