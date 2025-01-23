@@ -172,7 +172,7 @@ class _SettingPage extends State<SettingPage> {
                     SizedBox(height: 10,),
                     makeOptionsBoxWithPic('assets/images/Favorites.png', "앱 관리", '/settings/manage'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('assets/images/Favorites.png', "개인정보처리방침", 'settings/privacy'),
+                    makeOptionsBoxWithPic('assets/images/Favorites.png', "개인정보처리방침", '/settings/privacy'),
                   ],
                 )
               ],
@@ -376,7 +376,7 @@ class _SettingPage extends State<SettingPage> {
   Widget makeOptionsBoxWithPic(String imgPath, String title, String movePath)  {
     return InkWell(
       onTap: () {
-        context.go('/settings/notice');
+        context.go(movePath);
       },
       splashColor: Colors.blue.withOpacity(0.3),
       highlightColor: Colors.blue.withOpacity(0.1),
@@ -407,7 +407,7 @@ class _SettingPage extends State<SettingPage> {
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed: () {
-                    context.go('/settings/notice');
+                    context.go(movePath);
                   },
                 ),
               ],

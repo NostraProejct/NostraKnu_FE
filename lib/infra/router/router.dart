@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
 
 import 'package:nostra/community/write/communityWrite.dart';
+import 'package:nostra/setting/information/settingPrivacyPolicy.dart';
 import 'package:nostra/setting/manageProfile/settingManage.dart';
 import 'package:nostra/setting/notice/settingNotice.dart';
 import 'package:nostra/setting/settingPage.dart';
@@ -139,6 +140,11 @@ final GoRouter router = GoRouter(
                     path: 'notice',
                     pageBuilder: (BuildContext context, GoRouterState state) =>
                         _customTransitionPage(SettingNotice()),
+                  ),
+                  GoRoute(
+                    path: 'privacy',
+                    pageBuilder: (BuildContext context, GoRouterState state) =>
+                        _customTransitionPage(SettingPrivacyPolicy()),
                   ),
                 ],
               ),

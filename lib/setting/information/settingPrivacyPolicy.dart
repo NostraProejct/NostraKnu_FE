@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:nostra/setting/manageProfile/stepper.dart';
 
 class SettingPrivacyPolicy extends StatefulWidget {
+  const SettingPrivacyPolicy({super.key});
+
   @override
   State<StatefulWidget> createState() => _SettingPrivacyPolicy();
 }

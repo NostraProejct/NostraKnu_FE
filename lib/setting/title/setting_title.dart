@@ -6,10 +6,8 @@ class SettingTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignmeprivacy policynt.center,
-      child:information
-      Text(
-        '메뉴',
+      alignment: Alignment.center,
+      child:Text('메뉴',
         style: TextStyle(
           color: Colors.black,
           fontSize: 15,
