@@ -28,7 +28,7 @@ class _ActivityTotalState extends State<ActivityTotal> {
           ),
         ),
         child: Padding(
-            padding: EdgeInsets.only(right: 8),
+          padding: EdgeInsets.only(right: 8),
           child: RawScrollbar( // Scrollerbar 스타일
             controller: _scrollController, // ScrollController 연결
             thumbVisibility: true, // 스크롤바 항상 표시
@@ -57,7 +57,13 @@ class _ActivityTotalState extends State<ActivityTotal> {
                         50, // 총 50개의 스텝 생성
                             (index) => Step(
                           title: Text('전체 ${index + 1}'), // 목록 제목
-                          content: Text('전체 ${index + 1} 내용'), // 내용
+                          content: Form(
+                            child: Column(
+                              children: const [
+                                Text('전체 내용')
+                              ],
+                            ),
+                          ),
                           isActive: _currentStep == index, // 현재 활성화 단계가 _currentStep과 동일하면 활성화
                         ),
                       ),

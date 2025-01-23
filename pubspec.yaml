@@ -75,6 +75,9 @@ flutter:
     - assets/images/Lan.png
     - assets/images/Manage.png
     - assets/images/Privacy.png
+    - assets/images/image1.jpg
+    - assets/images/image2.jpg
+    - assets/images/image3.jpg
 
   fonts:
     - family: AcmeRegular
