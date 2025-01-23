@@ -82,7 +82,6 @@ class _SettingPage extends State<SettingPage> {
                     ),
                     const SizedBox(width: 2.0),
                     OutlinedButton(
-                      onPressed: () {},
                       child: const Text(
                         "프로필 공유",
                         style: TextStyle(
@@ -90,6 +89,40 @@ class _SettingPage extends State<SettingPage> {
                           color: Colors.black,
                         ),
                       ),
+                      onPressed: () {
+                        // 하단 알림 화면 표시
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              padding: EdgeInsets.all(16.0),
+                              width: MediaQuery.of(context).size.width * 1,
+                              height: MediaQuery.of(context).size.height * 0.2,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context); // 하단 시트 닫기
+                                    },
+                                    child: Image.asset('asset/images/KakaoTalk.png')
+                                  ),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.height * 0.2
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context); // 하단 시트 닫기
+                                    },
+                                    child: Image.asset('asset/images/KakaoTalk.png')
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      },
+
                     ),
                   ],
                 ),
@@ -157,21 +190,135 @@ class _SettingPage extends State<SettingPage> {
                     )
                   ),
                   onPressed: () {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: true, //바깥 영역 터치시 닫을지 여부 결정
+                      builder: ((context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.zero, // 내부 여백을 0으로 설정
+                          insetPadding: EdgeInsets.zero,
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              SizedBox(height: 45,),
+                              Text("정말로", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                              Text("로그아웃 하시겠어요?", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                              SizedBox(height: 45,)
+                            ],
+                          ),
 
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                Divider(
+                                  color: Color(0xffcccccc), // 색상
+                                  thickness: 2, // 두께
+                                  height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                ),
+                                Container(
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16), // 내부 여백 조정
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); //창 닫기
+                                    },
+                                    child: Text("로그아웃", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800),),
+                                  ),
+                                ),
+                                Divider(
+                                  color: Color(0xffcccccc), // 색상
+                                  thickness: 2, // 두께
+                                  height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                ),
+                                Container(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); //창 닫기
+                                    },
+                                    child: Text("취소", style: TextStyle(color: Colors.black),),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        );
+                      }),
+                    );
                   },
                   child: Center(
                     child: Text('로그아웃', style: TextStyle(color: Colors.black),),
                   ),
                 ),
               ),
+
               Center(
-                child: Text('계정 탈퇴',
-                  style: TextStyle(
+                child: TextButton(
+                  child: Text('계정 탈퇴',style: TextStyle(
                       fontSize: 10,
                       color: Colors.grey,
                       decoration: TextDecoration.underline,
-                    decorationColor: Colors.grey
+                      decorationColor: Colors.grey
                   ),),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: true, //바깥 영역 터치시 닫을지 여부 결정
+                      builder: ((context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.zero, // 내부 여백을 0으로 설정
+                          insetPadding: EdgeInsets.zero,
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              SizedBox(height: 45,),
+                              Text("정말로", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                              Text("회원을 탈퇴하시겠어요?", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),),
+                              SizedBox(height: 45,)
+                            ],
+                          ),
+
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                Divider(
+                                  color: Color(0xffcccccc), // 색상
+                                  thickness: 2, // 두께
+                                  height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                ),
+                                Container(
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16), // 내부 여백 조정
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); //창 닫기
+                                    },
+                                    child: Text("계정탈퇴", style: TextStyle(color: Colors.red, fontWeight: FontWeight.w800),),
+                                  ),
+                                ),
+                                Divider(
+                                  color: Color(0xffcccccc), // 색상
+                                  thickness: 2, // 두께
+                                  height: 0, // Divider의 높이를 0으로 설정하여 위아래 여백 최소화
+                                ),
+                                Container(
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); //창 닫기
+                                    },
+                                    child: Text("취소", style: TextStyle(color: Colors.black),),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        );
+                      }),
+                    );
+                  },
+                  ),
+
               ),
               SizedBox(height: 10,)
             ],
