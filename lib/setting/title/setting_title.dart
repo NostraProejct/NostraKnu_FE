@@ -7,9 +7,7 @@ class SettingTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child:
-      Text(
-        '메뉴',
+      child:Text('메뉴',
         style: TextStyle(
           color: Colors.black,
           fontSize: 15,
