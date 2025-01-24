@@ -37,6 +37,7 @@ dependencies:
   infinite_scroll_pagination: ^4.1.0
   image_picker: ^0.8.7+4
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +76,7 @@ flutter:
     - assets/images/Lan.png
     - assets/images/Manage.png
     - assets/images/Privacy.png
+    - assets/images/campus_map.png
 
   fonts:
     - family: AcmeRegular

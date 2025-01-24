@@ -9,6 +9,8 @@ import 'package:nostra/home/cafeteria/cafeteriaMain.dart';
 import 'package:nostra/home/activity/activityMain.dart';
 import 'package:nostra/home/employment/employmentMain.dart';
 
+import 'package:nostra/map/map_screen.dart';
+
 import 'package:nostra/community/main/communityMain.dart';
 import 'package:nostra/community/list/communityList.dart';
 import 'package:nostra/community/detail/communityDetail.dart';
@@ -87,7 +89,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/map',
               pageBuilder: (BuildContext context, GoRouterState state) =>
-                  _customTransitionPage(Text("맵 화면 준비 중")),
+                  _customTransitionPage(MapScreen()),
             ),
           ]
         ),

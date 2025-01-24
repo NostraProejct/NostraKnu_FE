@@ -243,8 +243,11 @@ class _SettingPage extends State<SettingPage> {
               children: [
                 Row(
                   children: [
+                    /*
                     Image.asset(
                       'assets/images/Notification.png', width: 30,),
+
+                     */
                     SizedBox(
                       width: 10,
                     ),

@@ -77,16 +77,17 @@ class CafetriaSection extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
-                          '밥\n된장국\n제육볶음\n계란말이',
+                          '백미밥 고추장시금치국\n간장순살찜닭 수제김치전\n숙주나물무침 깍두기',
                           style: TextStyle(
                             color: Colors.black87,
-                            fontSize: 16,
-                            height: 1.6,
+                            fontSize: 15.5,
+                            height: 1.7,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

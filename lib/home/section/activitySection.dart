@@ -69,9 +69,9 @@ class ActivitySection extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                     child: Text(
-                      '정보보안 SW 웹/앱 개발 공모전. 재단법인 미래와소프트웨어 제5회 아이디어 공모전12345678910',
+                      '정보보안 SW 웹/앱 개발 공모전.\n재단법인 미래와소프트웨어 제5회 아이디어 공모전12345678910',
                       style: TextStyle(
                         fontSize: 16,
                         height: 1.5,
