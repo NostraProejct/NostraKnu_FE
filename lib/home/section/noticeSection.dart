@@ -12,10 +12,10 @@ class _NoticeSectionState extends State<NoticeSection> {
 
   final List<Map<String, String>> recentNotices = [
     {"id": "1045", "title": "공지사항 1 제목", "date": "24.10.01"},
-    {"id": "1044", "title": "공지사항 2 제목", "date": "24.10.02"},
+    {"id": "1044", "title": "진로ㆍ취업 프로그램 운영을 위한 사전 수요 조사 참여 안내", "date": "24.10.02"},
     {"id": "1043", "title": "공지사항 3 제목", "date": "24.10.03"},
     {"id": "1042", "title": "공지사항 4 제목", "date": "24.10.04"},
-    {"id": "1041", "title": "공지사항 5 제목", "date": "24.10.05"},
+    {"id": "1041", "title": "[데이터보안활용혁신융합대학 사업단] 2025학년도 1학기 아주대학교 교류수학 안내", "date": "24.10.05"},
   ];
 
   @override
@@ -99,7 +99,7 @@ class _NoticeSectionState extends State<NoticeSection> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 6),
                         Container(
                           height: 75,
                           child: Text(
@@ -111,7 +111,7 @@ class _NoticeSectionState extends State<NoticeSection> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 10),
                         Text(
                           notice["date"]!,
                           style: TextStyle(

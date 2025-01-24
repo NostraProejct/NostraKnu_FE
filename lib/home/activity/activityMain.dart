@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:nostra/home/activity/activityTabView/acitivityTotal.dart';
-import 'package:nostra/home/activity/activityTabView/activityClub.dart';
-import 'package:nostra/home/activity/activityTabView/activityCompetition.dart';
-import 'package:nostra/home/activity/activityTabView/activityVolunteer.dart';
-import 'package:nostra/home/activity/activityTabView/activityStudy.dart';
+import 'activityTabView/acitivityTotal.dart';
+import 'activityTabView/activityClub.dart';
+import 'activityTabView/activityCompetition.dart';
+import 'activityTabView/activityVolunteer.dart';
+import 'activityTabView/activityStudy.dart';
 
 class ActivityMain extends StatefulWidget {
   const ActivityMain({super.key});
-
+//test
   @override
   State<ActivityMain> createState() => _ActivityMainState();
 }
