@@ -61,8 +61,8 @@ class _NoticeSectionState extends State<NoticeSection> {
           },
           child: Container(
             margin: const EdgeInsets.only(bottom: 14.0),
-            height: 170,
             width: double.infinity,
+            height: 200,
             child: PageView.builder(
               controller: _noticePageController,
               onPageChanged: (index) {
@@ -74,12 +74,12 @@ class _NoticeSectionState extends State<NoticeSection> {
                 final actualIndex = _calculateActualIndex(index);
                 final notice = recentNotices[actualIndex];
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Container(
                     padding: const EdgeInsets.all(18.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
+                      color: Color(0xFFEAD3C1),
+                      borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.2),
@@ -95,12 +95,12 @@ class _NoticeSectionState extends State<NoticeSection> {
                           notice["id"]!,
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.blue,
+                            color: Colors.grey[600],
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(height: 6),
-                        Container(
+                        SizedBox(height: 10),
+                        SizedBox(
                           height: 75,
                           child: Text(
                             notice["title"]!,
@@ -111,7 +111,7 @@ class _NoticeSectionState extends State<NoticeSection> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 35),
                         Text(
                           notice["date"]!,
                           style: TextStyle(
