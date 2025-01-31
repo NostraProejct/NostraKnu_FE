@@ -12,73 +12,93 @@ class ActivitySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: const [
-              SizedBox(width: 2),
-              Icon(Icons.list, color: Colors.black),
-              SizedBox(width: 4),
-              Text(
-                '대외활동',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 5),
           Container(
             width: (MediaQuery.of(context).size.width - 50) / 2,
-            height: 160,
+            height: 180,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: Offset(0, 2),
-                ),
-              ],
+              color: Color(0xFFDBDDF4),
+              borderRadius: BorderRadius.circular(20),
             ),
-            child: Column(
+            child: Stack(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.blue[50],
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 56.0, top: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
                       Text(
-                        '대회',
+                        '대외활동',
                         style: TextStyle(
-                          fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue[700],
-                        ),
+                          fontSize: 13
+                        )
                       ),
                     ],
                   ),
                 ),
-                Expanded(
+                Align(
+                  alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                    child: Text(
-                      '정보보안 SW 웹/앱 개발 공모전.\n재단법인 미래와소프트웨어 제5회 아이디어 공모전12345678910',
-                      style: TextStyle(
-                        fontSize: 16,
-                        height: 1.5,
-                        color: Colors.black87,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 4,
+                    padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+                    child: Container(
+                        width: 32.0,
+                        height: 32.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFC2C4E6),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.auto_graph,
+                          color: Colors.black,
+                          size: 20,
+                        )),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                      padding: EdgeInsets.only(left: 0.0, top: 123.0),
+                      child: Column(
+                        children: const [
+                          Text(
+                            "나만을 위한 대외활동",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF495057),
+                            ),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "확인하기",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        ],
+                      )
+                  ),
+                ),
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 50.0),
+                    child: Image(
+                      image: AssetImage("assets/images/activity.png"),
+                      width: 65.0,
+                      height: 65.0,
+                    ),
+                  ),
+                ),
+                const Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.keyboard_arrow_right, size: 18),
+                      ],
                     ),
                   ),
                 ),

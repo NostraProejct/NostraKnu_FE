@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Color(0xFFF3F8F7),
       appBar: _appBar(),
       body: _body(),
     );
@@ -24,25 +24,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   PreferredSizeWidget _appBar() {
     return AppBar(
-      backgroundColor: Colors.brown[100],
+      backgroundColor: Color(0xFFF3F8F7),
       elevation: 0,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Nostra',
-            style: GoogleFonts.poppins(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+          Padding(
+            padding: const EdgeInsets.only(left: 3.0, top: 5.0),
+            child: Text(
+              'Nostra',
+              style: GoogleFonts.poppins(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
           ),
-          Text(
-            '강원대학교 춘천캠퍼스',
-            style: GoogleFonts.roboto(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
+          Padding(
+            padding: const EdgeInsets.only(left: 2.0, top: 1.0),
+            child: Text(
+              '강원대학교 춘천캠퍼스',
+              style: GoogleFonts.roboto(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
             ),
           ),
         ],
@@ -60,8 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
             // 프로필 사진 클릭 시 동작
           },
           child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/Profile_image.jpg'),
-            radius: 15,
+            radius: 17,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/profile.jpg'),
+              radius: 15,
+              backgroundColor: Colors.white,
+            ),
           ),
         ),
         SizedBox(width: 14),
@@ -74,20 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         // 공지사항
         Container(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          decoration: BoxDecoration(
-            color: Colors.brown[100],
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-            ),
-          ),
+          padding: const EdgeInsets.only(top: 15.0, bottom: 5.0),
           child: NoticeSection(),
         ),
         // 학식, 대외활동, 취업 섹션
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(left: 16.0, top: 25.0, right: 16.0),
+            padding: const EdgeInsets.only(left: 16.0, top: 20.0, right: 16.0),
             child: Column(
               children: [
                 // 학식과 대외활동
@@ -106,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 20),
                 // 취업
                 EmploymentSection(
                   onTap: () {
