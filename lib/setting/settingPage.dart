@@ -105,7 +105,12 @@ class _SettingPage extends State<SettingPage> {
                                     onPressed: () {
                                       Navigator.pop(context); // 하단 시트 닫기
                                     },
-                                    child: Image.asset('asset/images/KakaoTalk.png')
+                                    child: SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: Image.asset('asset/images/KakaoTalk.png',
+                                        fit: BoxFit.contain,),
+                                    )
                                   ),
                                   SizedBox(
                                     width: MediaQuery.of(context).size.height * 0.2
@@ -114,7 +119,12 @@ class _SettingPage extends State<SettingPage> {
                                     onPressed: () {
                                       Navigator.pop(context); // 하단 시트 닫기
                                     },
-                                    child: Image.asset('asset/images/KakaoTalk.png')
+                                      child: SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: Image.asset('asset/images/KakaoTalk.png',
+                                          fit: BoxFit.fill,),
+                                      )
                                   ),
                                 ],
                               ),
