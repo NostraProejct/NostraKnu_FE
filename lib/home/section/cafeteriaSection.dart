@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CafetriaSection extends StatelessWidget {
+  final bool isFullWidth;
   final VoidCallback onTap;
 
-  const CafetriaSection({required this.onTap});
+  const CafetriaSection({this.isFullWidth = false, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -12,67 +13,102 @@ class CafetriaSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: const [
-              Icon(Icons.list, color: Colors.black),
-              SizedBox(width: 4),
-              Text(
-                '학식',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 5),
           Container(
-            width: (MediaQuery.of(context).size.width - 50) / 2,
-            height: 150,
+            width: isFullWidth
+                ? double.infinity
+                : (MediaQuery.of(context).size.width - 50) / 2,
+            height: 180,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(12),
+              color: const Color(0xFFC1EBE9),
+              borderRadius: BorderRadius.circular(20),
             ),
-            child: Padding(
-              padding: EdgeInsets.all(14.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Row(
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 56.0, top: 20),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'MON',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(width: 12),
-                      Text(
-                        '10.7',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        ),
-                      ),
+                    children: const [
+                      Text('학식',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 13)),
                     ],
                   ),
-                  SizedBox(height: 5),
-                  Text(
-                    '밥 제육볶음\n계란말이\n된장국',
-                    style: TextStyle(
-                      color: Colors.black,
-                      height: 1.65,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+                    child: Container(
+                        width: 32.0,
+                        height: 32.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFA9D1D6),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.restaurant,
+                          color: Colors.black,
+                          size: 20,
+                        )),
+                  ),
+                ),
+                const Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 15.0, top: 55.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'MON',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              '10.7',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 3),
+                        Text(
+                          '밥 제육볶음\n계란말이\n된장국',
+                          style: TextStyle(
+                            color: Colors.black,
+                            height: 1.65,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                const Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min, // 아이콘과 텍스트의 크기를 최소화
+                      children: [
+                        Icon(Icons.keyboard_arrow_right, size: 18),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           )
         ],

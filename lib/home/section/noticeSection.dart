@@ -11,11 +11,11 @@ class _NoticeSectionState extends State<NoticeSection> {
   int _currentNoticeIndex = 0;
 
   final List<Map<String, String>> recentNotices = [
-    {"id": "1045", "title": "공지사항 1 제목", "date": "24.10.01"},
-    {"id": "1044", "title": "공지사항 2 제목", "date": "24.10.02"},
-    {"id": "1043", "title": "공지사항 3 제목", "date": "24.10.03"},
-    {"id": "1042", "title": "공지사항 4 제목", "date": "24.10.04"},
-    {"id": "1041", "title": "공지사항 5 제목", "date": "24.10.05"},
+    {"id": "1045", "title": "강원대학교 공지사항", "date": "24.10.01"},
+    {"id": "1044", "title": "컴퓨터공학과 공지사항", "date": "24.10.02"},
+    {"id": "1043", "title": "언어연수과 공지사항", "date": "24.10.03"},
+    {"id": "1042", "title": "취업지원과 공지사항", "date": "24.10.04"},
+    {"id": "1041", "title": "총학생회 홈페이지", "date": "24.10.05"},
   ];
 
   @override
@@ -24,7 +24,7 @@ class _NoticeSectionState extends State<NoticeSection> {
     super.initState();
     _noticePageController = PageController(
       initialPage: recentNotices.length * 100, // 임의의 큰 값으로 설정
-      viewportFraction: 0.88,
+      viewportFraction: 1.0,
     );
   }
 
@@ -43,28 +43,17 @@ class _NoticeSectionState extends State<NoticeSection> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 25.0, top: 3.0, bottom: 10.0),
-          child: Text(
-            '컴퓨터공학과',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-        // 공지사항 칸
         GestureDetector(
           onTap: () {
-            context.go('/notice'); // 공지사항 페이지로 이동
+            context.go('/notice');
           },
           child: Container(
-            margin: const EdgeInsets.only(bottom: 14.0),
-            height: 170,
+            height: 220,
             width: double.infinity,
             child: PageView.builder(
-              controller: _noticePageController,
+              controller: PageController(
+                viewportFraction: 1.0, // 이거 다시 확인하기, _noticepageController에서 바꾸면 안바뀜
+              ),
               onPageChanged: (index) {
                 setState(() {
                   _currentNoticeIndex = _calculateActualIndex(index);
@@ -74,12 +63,12 @@ class _NoticeSectionState extends State<NoticeSection> {
                 final actualIndex = _calculateActualIndex(index);
                 final notice = recentNotices[actualIndex];
                 return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
                   child: Container(
                     padding: const EdgeInsets.all(18.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
+                      color: Color(0xFFEAD3C1),
+                      borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.2),
@@ -91,16 +80,8 @@ class _NoticeSectionState extends State<NoticeSection> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          notice["id"]!,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Container(
+                        SizedBox(height: 5),
+                        SizedBox(
                           height: 75,
                           child: Text(
                             notice["title"]!,
@@ -111,7 +92,7 @@ class _NoticeSectionState extends State<NoticeSection> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        SizedBox(height: 60),
                         Text(
                           notice["date"]!,
                           style: TextStyle(
@@ -128,21 +109,24 @@ class _NoticeSectionState extends State<NoticeSection> {
           ),
         ),
         // 점 네비게이션
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            recentNotices.length,
-                (index) =>
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 4.0),
-                  width: 9,
-                  height: 9,
-                  decoration: BoxDecoration(
-                    color: _currentNoticeIndex == index ? Colors.black : Colors
-                        .grey[400],
-                    shape: BoxShape.circle,
+        Padding(
+          padding: const EdgeInsets.only(top: 15.0,bottom: 5.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              recentNotices.length,
+                  (index) =>
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 4.0),
+                    width: 9,
+                    height: 9,
+                    decoration: BoxDecoration(
+                      color: _currentNoticeIndex == index ? Colors.black : Colors
+                          .grey[400],
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
+            ),
           ),
         ),
       ],
