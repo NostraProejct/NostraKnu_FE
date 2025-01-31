@@ -122,12 +122,12 @@ class _EmploymentMainState extends State<EmploymentMain> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(
-                        left: 20.0, right: 20.0, bottom: 20.0),
+                        left: 20.0, right: 20.0, bottom: 15.0),
                     child: Container(
-                      height: 90,
+                      height: 75,
                       decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(15),
+                          color: const Color(0x80E3D5CA),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.grey.withOpacity(0.2),
@@ -139,18 +139,27 @@ class _EmploymentMainState extends State<EmploymentMain> {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(10.0),
-                            child: Icon(
-                              Icons.star,
-                              color: Colors.black12,
-                              size: 40,
-                            ),
+                            child: Container(
+                              height: 35,
+                              width: 35,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.white70,
+                                borderRadius: BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: Icon(
+                                Icons.done,
+                                color: Colors.black54,
+                                size: 30,
+                              ),
+                            )
                           ),
                           Expanded(
                               child: Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Text(
-                              'Item ${index + 1}',
-                            style: TextStyle(fontSize: 18),),
+                              '사이트 링크 연결',
+                            style: TextStyle(fontSize: 15),),
                           ))
                         ],
                       ),

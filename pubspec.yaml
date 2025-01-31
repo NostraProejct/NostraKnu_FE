@@ -55,19 +55,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: Right_arrow
+      fonts:
+        - asset: assets/Icons/Right_arrow.ttf
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   assets:
-    - assets/images/HomeSliderPicture_1.jpg
-    - assets/images/HomeSliderPicture_2.jpg
-    - assets/images/HomeSliderPicture_3.jpg
-    - assets/images/HomeSliderPicture_4.jpg
-    - assets/images/HomeSliderPicture_5.jpg
-    - assets/images/HomeBackgroundPicture_1.png
     - assets/images/Favorites.png
     - assets/images/Camera.png
     - assets/images/Profile_image.png
@@ -78,26 +73,8 @@ flutter:
     - assets/images/image1.jpg
     - assets/images/image2.jpg
     - assets/images/image3.jpg
+    - assets/images/activity.png
 
-  fonts:
-    - family: AcmeRegular
-      fonts:
-        - asset: assets/fonts/Acme-Regular.ttf
-    - family: BebasNeueRegular
-      fonts:
-        - asset: assets/fonts/BebasNeue-Regular.ttf
-    - family: ConcertOneRegular
-      fonts:
-        - asset: assets/fonts/ConcertOne-Regular.ttf
-    - family: PatuaOneRegular
-      fonts:
-        - asset: assets/fonts/PatuaOne-Regular.ttf
-    - family: PermanentMarkereRegular
-      fonts:
-        - asset: assets/fonts/PermanentMarker-Regular.ttf
-    - family: RubikMonoOneRegular
-      fonts:
-        - asset: assets/fonts/RubikMonoOne-Regular.ttf
-    - family: ChewyRegular
-      fonts:
-        - asset: assets/fonts/Chewy-Regular.ttf
+
+
+
