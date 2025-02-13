@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:nostra/home/employment/promoSlider.dart';
+
+import 'employmentList.dart';
 
 class EmploymentMain extends StatefulWidget {
   const EmploymentMain({super.key});
@@ -9,8 +12,6 @@ class EmploymentMain extends StatefulWidget {
 }
 
 class _EmploymentMainState extends State<EmploymentMain> {
-  String _selectedCategory = '전체';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,150 +23,150 @@ class _EmploymentMainState extends State<EmploymentMain> {
   PreferredSizeWidget _appBar() {
     return AppBar(
       leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+        icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
         iconSize: 20,
         onPressed: () => context.pop(),
       ),
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search_rounded, color: Color(0xFF919191),),
-                contentPadding: EdgeInsets.symmetric(vertical:5),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15)), // 꼭지점을 둥글게
-                  borderSide: BorderSide.none, // 테두리 없애기
-                ),
-                filled: true,
-                fillColor: Color(0xFFE8E8E8),
-                hintText: 'Search all Components',
-                hintStyle: TextStyle(color: Color(0xFF919191))
-              ),
-            ),
+          Expanded(child: SizedBox(),
           ),
-          SizedBox(width: 40,)
+          Icon(Icons.search_rounded, color: Color(0xFF919191)),
         ],
       ),
     );
   }
 
   Widget _body() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10.0),
-                child: Text(
-                  'Find',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 40.0),
-                child: Text(
-                  'Your',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 30.0),
-                    child: Text(
-                      'Job',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  DropdownButton<String>(
-                    value: _selectedCategory,
-                    items: <String>['전체', '프론트', '백엔드', 'AI']
-                        .map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        if (newValue != null) {
-                          _selectedCategory = newValue;
-                        } else {
-                          _selectedCategory = '전체';
-                        }
-                      });
-                    },
-                  ),
+    return Column(
+      children: [
+        Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height / 2.5,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE3D5CA),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 1)),
                 ],
               ),
+            ),
+            Positioned(
+                child: Column(
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.0, right: 8.0, top: 25.0),
+                      child: Text(
+                        '"현권" 님을 위한',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: EdgeInsets.only(left: 30.0,),
+                      child: Text(
+                        '추천 취업 리스트',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+            ),
+            Positioned(
+              top: 120, // 문장 아래에 위치하도록 조정
+              left: 0,
+              right: 0,
+              child: PromoSlider(), // PromoSlider 위젯 추가
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 16.0,
+            right: 16.0,
+            top: 10.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text(
+                "취업 리스트",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              SizedBox(
+                width: 200,
+              ),
+              TextButton(
+                onPressed: () {
+                  debugPrint("TextButton pressed");
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.blue,
+                  textStyle: const TextStyle(fontSize: 16),
+                ),
+                child: const Text('더 보기'),
+              )
             ],
           ),
-          Expanded(
-            child: Scrollbar(
-              thumbVisibility: true,
-              child: ListView.builder(
-                itemCount: 6, // 채용 공고 개수
+        ),
+        Expanded(
+            child: ListView.builder(
+                itemCount: 5,
                 itemBuilder: (context, index) {
-                  return JobCard(index: index); // JobCard 위젯 호출
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class JobCard extends StatelessWidget {
-  final int index;
-
-  const JobCard({super.key, required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      margin: const EdgeInsets.only(top: 0, bottom: 16, right: 20),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFFFFF), // 배경색
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: const Color(0xFFE3D5CA), width: 6),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '채용 공고 ${index + 1}', // 각 공고 제목
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8), // 여백을 줄임
-          const Text(
-            '클릭하면 취업사이트로 이동.', // 임시 내용
-            style: TextStyle(fontSize: 14, color: Colors.black54),
-          ),
-        ],
-      ),
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20.0, right: 20.0, bottom: 15.0),
+                    child: Container(
+                      height: 75,
+                      decoration: BoxDecoration(
+                          color: const Color(0x80E3D5CA),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 1,
+                                blurRadius: 3,
+                                offset: Offset(0, 1))
+                          ]),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Container(
+                              height: 35,
+                              width: 35,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.rectangle,
+                                color: Colors.white70,
+                                borderRadius: BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: Icon(
+                                Icons.done,
+                                color: Colors.black54,
+                                size: 30,
+                              ),
+                            )
+                          ),
+                          Expanded(
+                              child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              '사이트 링크 연결',
+                            style: TextStyle(fontSize: 15),),
+                          ))
+                        ],
+                      ),
+                    ),
+                  );
+                }))
+      ],
     );
   }
 }
