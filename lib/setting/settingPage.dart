@@ -22,29 +22,60 @@ class _SettingPage extends State<SettingPage> {
               color: Color(0xFFF8F8F8),
               borderRadius: BorderRadius.circular(8),
             ),
+
             child: Column(
               children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  child:
+                  Image.asset('assets/images/Profile_image.jpg',
+                      fit: BoxFit.contain
+                  ),
+                ),
+
+                const SizedBox(height: 80.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('images/Profile_image.jpg'),
+                          radius: 110.0,
+                        ),
+                        const SizedBox(height: 20.0),
+                        TextButton(
+                          onPressed: () {
+                            context.go('/settings/manage');
+                          },
+                          child: const Text(
+                            "유저 아이디",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const [
                     Column(
                       children: [
-                        CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/Profile_image.jpg'),
-                          radius: 70.0,
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
                         Text(
-                          "유저 아이디",
+                          "35",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(height: 10.0),
                         Text(
                           "팔로워",
                           style: TextStyle(
@@ -52,6 +83,18 @@ class _SettingPage extends State<SettingPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "35",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
                         Text(
                           "팔로잉",
                           style: TextStyle(
@@ -68,18 +111,6 @@ class _SettingPage extends State<SettingPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
-                    OutlinedButton(
-                      onPressed: () {
-                        context.go('/settings/manage');
-                      },
-                      child: const Text(
-                        "프로필 관리",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
                     const SizedBox(width: 2.0),
                     OutlinedButton(
                       child: const Text(
@@ -150,7 +181,7 @@ class _SettingPage extends State<SettingPage> {
                       height: 10,
                     ),
                     Text('계정', style: TextStyle(color: Colors.grey),),
-                    makeOptionsBox("계정 관리"),
+                    makeOptionsBoxWithPic('asset/images/Lan.png', "계정 관리", '/settings/manage'),
                   ],
                 ),
 
@@ -164,7 +195,7 @@ class _SettingPage extends State<SettingPage> {
                     Text('일반', style: TextStyle(color: Colors.grey),),
                     makeOptionsBoxWithPic('asset/images/Lan.png', "글자/언어", '/settings/lan'),
                     SizedBox(height: 10,),
-                    makeOptionsBoxWithPic('asset/images/Notification.png', "알림/권한", '/settings/notifications'),
+                    makeOptionsBoxWithPic('asset/images/Notification.png', "알림/권한", '/settings/notice'),
                     SizedBox(height: 10,),
                     makeOptionsBoxWithPic('asset/images/Option.png', "기타", '/settings/etc'),
                   ],
@@ -338,51 +369,6 @@ class _SettingPage extends State<SettingPage> {
     );
   }
 
-  Widget makeOptionsBox(String title)  {
-    return InkWell(
-      onTap: () {
-      },
-      splashColor: Colors.blue.withOpacity(0.3),
-      highlightColor: Colors.blue.withOpacity(0.1),
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios),
-                  onPressed: () {
-                    context.go('/settings/notice');
-                  },
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget makeOptionsBoxWithPic(String imgPath, String title, String movePath)  {
     return InkWell(
       onTap: () {
@@ -415,7 +401,7 @@ class _SettingPage extends State<SettingPage> {
                   ],
                 ),
                 IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios),
+                  icon: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
                   onPressed: () {
                     context.go(movePath);
                   },

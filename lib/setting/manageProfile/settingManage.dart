@@ -24,7 +24,7 @@ class _SettingManage extends State<SettingManage> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(
-                    '커뮤니티',
+                    '프로필 관리',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ),
